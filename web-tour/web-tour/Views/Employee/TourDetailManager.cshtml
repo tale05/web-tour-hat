@@ -1,0 +1,128 @@
+﻿@model web_tour.Models.TourDetailViewModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Chi tiết tour";
+}
+<link href="~/css/employee/tourdetailedit.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/notification.css" />
+
+@using (Html.BeginForm("InsertOrUpdateTourDetail", "Employee", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-for__tourDetailManager" }))
+{
+    <div class="container-input-for__tourDetailManager">
+
+        <div class="group-TourDetailId__tourDetailManager">
+            <label for="TourDetailId">Id-System</label>
+            <input id="TourDetailId" class="input-TourDetailId__tourDetailManager" type="text" name="TourDetailId" value="@Model.TourDetailId" readonly="readonly" style="background-color: lightgrey; cursor:not-allowed" />
+        </div>
+
+        <div class="group-TourId__tourDetailManager">
+            <label for="TourId">Đang chỉnh sửa tour: @ViewBag.Title</label>
+            <input id="TourId" class="input-TourId__tourDetailManager" type="text" name="TourId" value="@Model.TourId" readonly="readonly" style="background-color: lightgrey; cursor:not-allowed" />
+        </div>
+
+        <div class="group-Description__tourDetailManager">
+            <label for="Description">Mô tả</label>
+            <textarea id="Description"
+                      class="input-Description__tourDetailManager"
+                      name="Description"
+                      rows="10"
+                      style="width: 100%; border-radius: 20px; padding: 10px 14px;">@Model.Description</textarea>
+        </div>
+
+        <div class="group-PriceBefore__tourDetailManager">
+            <label for="PriceBefore">Giá gốc</label>
+            <input id="PriceBefore"
+                   class="input-PriceBefore__tourDetailManager"
+                   type="text"
+                   name="PriceBefore"
+                   value="@Model.PriceBefore"
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+        </div>
+
+        <div class="group-PriceAfter__tourDetailManager">
+            <label for="PriceAfter">Giá khuyến mãi</label>
+            <input id="PriceAfter"
+                   class="input-PriceAfter__tourDetailManager"
+                   type="text"
+                   name="PriceAfter"
+                   value="@Model.PriceAfter"
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+        </div>
+
+        <div class="group-Content__tourDetailManager">
+            <label for="input-Content__tourDetailManager">Nội dung</label>
+            <textarea id="input-Content__tourDetailManager"
+                      name="content"
+                      style="width:790px; height:1123px; border: 1px solid #000;">@Model.Content</textarea>
+        </div>
+    </div>
+
+    <div class="container-button-for__tourDetailManager">
+        @if (Model.TourDetailId == null)
+        {
+            <button type="submit"
+                    name="actionType"
+                    value="create"
+                    class="button-submit__tourDetailManager">
+                Tạo mới
+            </button>
+        }
+        else
+        {
+            <button type="submit" name="actionType" value="update" class="button-submit__tourDetailManager">Lưu thông tin</button>
+        }
+
+        <a href="@Url.Action("TourManagement", "Employee")">
+            <button type="button" class="button-back__tourDetailManager">Trở về</button>
+        </a>
+    </div>
+    @await Html.PartialAsync("_NotificationPartial")
+}
+
+<script src="https://cdn.tiny.cloud/1/iz8q6xcbgibchqldkhb6kbg9syrm3vb1q77ts1c280qm9p6m/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    @if (TempData["Error"] != null)
+    {
+        <text> showNotification('error', '@TempData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+
+    tinymce.init({
+        selector: '#input-Content__tourDetailManager',
+        plugins: [
+            'paste',
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons',
+            'image', 'link', 'lists', 'media', 'searchreplace',
+            'table', 'visualblocks', 'wordcount'
+        ],
+        toolbar: 'openelfinder | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        forced_root_block: 'p',
+        setup: function (editor) {
+            editor.ui.registry.addButton('openelfinder', {
+                text: 'Chọn ảnh (elFinder)',
+                icon: 'browse',
+                onAction: function () {
+                    var fileManagerURL = '@Url.Action("SelectImage", "FileManager")';
+                    var w = 900, h = 600;
+                    var x = window.screenX + (window.outerWidth - w) / 2;
+                    var y = window.screenY + (window.outerHeight - h) / 2;
+                    window.SetImageUrl = function (url) {
+                        // Không xử lý lại url, chèn trực tiếp như elFinder trả về
+                        editor.insertContent('<img src="' + url + '" style="display:block;margin-left:auto;margin-right:auto;max-width:100%;height:auto;" /><p></p>');
+                    };
+                    window.open(
+                        fileManagerURL,
+                        'elFinder',
+                        'width=' + w + ',height=' + h + ',left=' + x + ',top=' + y + ',resizable=yes'
+                    );
+                }
+            });
+        },
+        paste_as_text: false,
+        paste_data_images: true,
+        content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img { display:block; margin:auto; max-width:100%; height:auto; }"
+    });
+</script>

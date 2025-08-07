@@ -1,0 +1,12 @@
+﻿body {
+    /* Prevent Copy */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+    body img {
+        pointer-events: none;
+        -webkit-user-drag: none;
+    }

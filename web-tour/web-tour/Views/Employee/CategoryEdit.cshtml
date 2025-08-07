@@ -1,0 +1,115 @@
+﻿@model web_tour.Entities.Category
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Chỉnh sửa danh mục";
+}
+<link href="~/css/employee/categoryedit.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/notification.css" />
+
+<div class="category-edit-form-wrapper">
+    <h2 class="text-center mb-4">Chỉnh sửa danh mục</h2>
+    <br />
+    @using (Html.BeginForm("UpdateCategory", "Employee", FormMethod.Post, new { enctype = "multipart/form-data", @class = "category-edit-form" }))
+    {
+        @Html.HiddenFor(model => model.CategoryId)
+
+        <div class="form-group">
+            <label for="NameCategory">Tên danh mục</label>
+            @Html.TextBoxFor(model => model.NameCategory, new { @class = "form-control", placeholder = "Nhập tên danh mục" })
+        </div>
+        <div class="form-group mt-3">
+            <label for="ImgCategory">Ảnh danh mục</label>
+            <input type="text"
+                   id="ImgCategory"
+                   name="ImgCategory"
+                   class="form-control"
+                   required
+                   readonly="readonly" />
+
+            <button type="button" onclick="openFileManager()">Click để mở form chọn ảnh</button>
+
+            @if (!string.IsNullOrEmpty(Model.ImgCategory))
+            {
+                <div class="img-preview-wrapper-categoryEdit">
+                    <img id="previewImage"
+                         src="@Model.ImgCategory"
+                         alt="Ảnh hiện tại"
+                         class="img-thumbnail-categoryEdit"
+                         onerror="this.onerror=null; this.src='@Url.Content("~/images/empty.png")';" />
+                </div>
+            }
+        </div>
+
+
+        <div class="form-group mt-3">
+            <label for="StatusCategory">Trạng thái</label>
+            @Html.DropDownListFor(model => model.StatusCategory,
+                     new SelectList(new[] {
+        new { Text = "Đang hiển thị", Value = true },
+        new { Text = "Đã ẩn", Value = false }
+        }, "Value", "Text", Model.StatusCategory),
+                     new { @class = "form-control" })
+        </div>
+
+        <div class="text-end mt-4">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Lưu thay đổi
+            </button>
+            <a href="@Url.Action("CategoryManagement", "Employee")" class="btn btn-secondary-custom ms-2">
+                <i class="fas fa-arrow-left"></i> Trở về
+            </a>
+        </div>
+    }
+    @await Html.PartialAsync("_NotificationPartial")
+</div>
+
+@section Scripts {
+    <script>
+        @if (TempData["Error"] != null)
+        {
+            <text> showNotification('error', '@TempData["Error"]'); </text>
+        }
+        else if (TempData["Success"] != null)
+        {
+            <text> showNotification('success', '@TempData["Success"]'); </text>
+        }
+    </script>
+    <script>
+        function openFileManager() {
+            // Mở popup elFinder
+            var width = 900;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+
+            window.open(
+                '/FileManager/SelectImage',
+                'FileManager',
+                'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+            );
+        }
+
+        function SetImageUrl(url) {
+                // Nếu url bắt đầu bằng domain thì cắt chỉ lấy đường dẫn tương đối
+                try {
+                        var relativeUrl = url;
+                        // Nếu url là dạng tuyệt đối, ví dụ: https://localhost:7231/files/tourmiennam.jpg
+                        var origin = window.location.origin;
+                        if (url.startsWith(origin)) {
+                            relativeUrl = url.substring(origin.length);
+                        }
+                        document.getElementById('ImgCategory').value = relativeUrl;
+                        const img = document.getElementById('previewImage');
+                        img.src = relativeUrl;
+                        img.style.display = "block";
+                    } catch (e) {
+                        document.getElementById('ImgCategory').value = url;
+                        const img = document.getElementById('previewImage');
+                        img.src = url;
+                        img.style.display = "block";
+                    }
+                }
+
+        window.SetImageUrl = SetImageUrl;
+    </script>
+}

@@ -1,0 +1,262 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: white;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ip-lookup-container {
+    background: rgba(255, 249, 230, 0.95); /* vàng nhạt trong suốt */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2); /* cam vàng nhạt bóng */
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ip-lookup-header {
+    background: linear-gradient(135deg, #f97316 0%, #fbbf24 50%, #b45309 100%); /* cam - cam vàng - cam vàng đậm */
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.country-flags {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.flag-icon {
+    width: 24px;
+    height: 18px;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.ip-lookup-content {
+    padding: 40px 30px 30px;
+}
+
+.current-ip-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.current-ip-label {
+    font-size: 18px;
+    color: #b45309; /* cam vàng đậm */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.ip-address-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.ip-address {
+    font-size: 32px;
+    font-weight: 700;
+    color: #b45309; /* cam vàng đậm */
+    letter-spacing: 1px;
+}
+
+/* Nút copy màu cam chủ đạo, chữ trắng */
+.copy-button {
+    background-color: #f97316; /* cam */
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: black; /* icon trắng */
+    font-size: 18px;
+    padding: 0;
+}
+
+    .copy-button:hover {
+        background-color: #ea580c; /* cam đậm hơn khi hover */
+        transform: translateY(-2px);
+    }
+
+.copy-icon {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+.additional-info-section {
+    margin-top: 20px;
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #fde68a; /* vàng nhạt viền */
+}
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+.info-label {
+    font-size: 16px;
+    color: #b45309; /* cam vàng đậm */
+    font-weight: 500;
+    flex: 1;
+}
+
+.info-value {
+    font-size: 16px;
+    color: #78350f; /* cam vàng đậm hơn */
+    font-weight: 600;
+    text-align: right;
+    flex: 1;
+    word-break: break-all;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 30px;
+    border-top: 1px solid #fde68a; /* vàng nhạt */
+    background: rgba(254, 240, 138, 0.1); /* vàng nhạt nhẹ */
+    font-size: 14px;
+    color: #b45309; /* cam vàng đậm */
+}
+
+    .footer a {
+        color: #f97316; /* cam */
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+/* Get Info Button Styles */
+h2 {
+    color: #b45309; /* cam vàng đậm */
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(180, 83, 9, 0.5);
+}
+
+button {
+    background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%); /* cam - vàng */
+    color: #78350f; /* cam vàng đậm */
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); /* cam vàng nhạt bóng */
+}
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .ip-lookup-container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+
+    .ip-lookup-header {
+        padding: 25px 20px;
+    }
+
+    .header-title {
+        font-size: 24px;
+    }
+
+    .ip-lookup-content {
+        padding: 30px 20px 20px;
+    }
+
+    .ip-address {
+        font-size: 28px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+}
+
+/* Animation for content loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ip-lookup-container {
+    animation: fadeInUp 0.6s ease-out;
+}

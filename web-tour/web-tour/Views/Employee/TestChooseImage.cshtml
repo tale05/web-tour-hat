@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div>
+    <h1>Chọn ảnh</h1>
+
+    <!-- Nút mở popup elFinder -->
+    <button type="button" onclick="openFileManager()">Click để mở form chọn ảnh</button>
+
+    <!-- Input nhận đường dẫn ảnh -->
+    <input type="text" id="imagePath" name="imagePath" style="width: 100%; margin-top: 10px;" />
+
+    <!-- Thẻ hiển thị ảnh -->
+    <div style="margin-top: 15px;">
+        <img id="previewImage" src="" alt="Chưa có ảnh nào được chọn" style="max-width: 100%; height: auto; display: none; border: 1px solid #ccc; padding: 5px;" />
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function openFileManager() {
+            // Mở popup elFinder
+            var width = 900;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+
+            window.open(
+                '/FileManager/SelectImage',
+                'FileManager',
+                'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+            );
+        }
+
+        // Nhận đường dẫn từ elFinder và hiển thị ảnh
+        function SetImageUrl(url) {
+            document.getElementById('imagePath').value = url;
+            const img = document.getElementById('previewImage');
+            img.src = url;
+            img.style.display = "block";
+        }
+
+        window.SetImageUrl = SetImageUrl;
+    </script>
+}

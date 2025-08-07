@@ -1,0 +1,116 @@
+﻿@model web_tour.Models.AllListViewModelsForIndexPage
+@{
+    string phone = Model.CompanyForIndexAbout.CompanyPhone;
+    if (string.IsNullOrEmpty(phone))
+    {
+        phone = "84123456789";
+    }
+    else
+    {
+        phone = phone.Trim();
+        if (phone.StartsWith("0"))
+        {
+            phone = "84" + phone.Substring(1);
+        }
+    }
+    string zaloLink = $"https://zalo.me/{phone}";
+    string whatsappLink = $"https://api.whatsapp.com/send?phone={phone}&app=facebook&entry_point=page_cta";
+
+    var fbPageUrl = Model.CompanyForIndexAbout.FacebookUrl;
+    if (string.IsNullOrEmpty(fbPageUrl) || !fbPageUrl.StartsWith("https://www.facebook.com"))
+    {
+        fbPageUrl = "https://www.facebook.com/facebook"; // fallback URL nếu bạn muốn
+    }
+}
+<link rel="stylesheet" href="~/css/homePartial/footerPartial.css" />
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-col">
+            <h3>@Model.CompanyForIndexAbout.NameVie</h3>
+            <p><strong>Địa chỉ:</strong> @Model.CompanyForIndexAbout.CompanyAddress</p>
+            <p><strong>Email:</strong> @Model.CompanyForIndexAbout.CompanyEmail</p>
+            <p><strong>Phone:</strong> @Model.CompanyForIndexAbout.CompanyPhone</p>
+
+            <div class="social-icons-for_Footer">
+                <a href="@zaloLink" target="_blank" title="Zalo">
+                    <img src="~/images/Icon_of_Zalo.png" alt="Zalo" style="width: 28px; height: 28px;">
+                </a>
+                <a href="@Model.CompanyForIndexAbout.FacebookUrl" target="_blank" title="Facebook">
+                    <img src="~/images/Icon_of_Facebook.png" alt="Facebook" style="width: 29px; height: 29px;">
+                </a>
+                <a href="@whatsappLink" target="_blank" title="_Whatsapp">
+                    <img src="~/images/Icon_of_Whatsapp.png" alt="Whatsapp" style="width: 32px; height: 32px;">
+                </a>
+                <a href="tel:@phone" target="_blank" title="Call">
+                    <img src="~/images/Icon_of_Call.png" alt="Call" style="width: 31px; height: 31px;">
+                </a>
+                <a href="mailto: @Model.CompanyForIndexAbout.CompanyEmail" target="_blank" title="Gmail">
+                    <img src="~/images/Icon_of_Gmail.png" alt="Gmail" style="width: 36px; height: 36px;">
+                </a>
+                <a href="https://www.google.com/maps?ll=10.761834,106.702987&z=14&t=m&hl=en&gl=US&mapclient=embed&cid=1120200730723070724" target="_blank" title="Maps">
+                    <img src="~/images/Icon_of_Maps.png" alt="Maps" style="width: 29px; height: 29px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>DỊCH VỤ</h3>
+            <p>√ Tour trọn gói trong nước</p>
+            <p>√ Tour ghép Miền Tây, Nha Trang, Đà Lạt, Phú Quốc, Đà Nẵng</p>
+            <p>√ Cho thuê xe 4c - 45c</p>
+            <p>√ Dịch vụ combo nghỉ dưỡng</p>
+            <p>√ Dịch vụ đặt vé máy bay trong và ngoài nước</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>FANPAGE</h3>
+            <div class="fanpage-box">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fletan.dulichhat&tabs=timeline&width=300&height=200&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=982017233818436"
+                        width="300"
+                        height="200"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>BẢN ĐỒ</h3>
+            <div class="embed-map">
+                <iframe class="embed-map-frame" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://maps.google.com/maps?width=400&height=400&hl=en&q=C%C3%B4ng%20ty%20TNHH%20D%E1%BB%8Bch%20V%E1%BB%A5%20v%C3%A0%20Du%20L%E1%BB%8Bch%20H.A.T&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="company-info">
+            <h3>THÔNG TIN CÔNG TY</h3>
+            <p><strong>Tên công ty (VN):</strong> @Model.CompanyForIndexAbout.NameVie</p>
+            <p><strong>Tên công ty (EN):</strong> @Model.CompanyForIndexAbout.NameEng</p>
+            <p><strong>Tên viết tắt:</strong> @Model.CompanyForIndexAbout.NameAbbr</p>
+            <p><strong>Số ĐKKD:</strong> @Model.CompanyForIndexAbout.BusinessLicenseNo</p>
+            <p><strong>Ngày ĐKKD:</strong> @Model.CompanyForIndexAbout.BusinessLicenseDate</p>
+            <p><strong>Đăng ký tại:</strong> @Model.CompanyForIndexAbout.IssuedBy</p>
+            <p><strong>Giấy phép LHQT số GP/No:</strong> @Model.CompanyForIndexAbout.InternationalTravelLicenseNo</p>
+            <p><strong>Giấy phép LHQT cấp ngày:</strong> @Model.CompanyForIndexAbout.InternationalTravelLicenseDate</p>
+
+        </div>
+        <div class="certificates">
+            @if (ViewBag.BusinessLicenses is List<string> images && images.Any())
+            {
+                foreach (var img in images)
+                {
+                    <img src="@img" alt="Giấy phép kinh doanh" class="certificate-img" />
+                }
+            }
+            else
+            {
+                <p>Chưa có giấy phép kinh doanh nào được tải lên.</p>
+            }
+        </div>
+    </div>
+</footer>

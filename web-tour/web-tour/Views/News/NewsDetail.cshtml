@@ -1,0 +1,55 @@
+﻿@using web_tour.Helpers
+@inject web_tour.Helpers.HashIdHelper HashId
+@model web_tour.Models.AllListViewModelsForIndexPage
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var news = Model.NewsForIndex;
+    var newsTitle = $"{news.Title} - Du lịch H.A.T";
+    ViewBag.Title = newsTitle;
+
+    var slugTitle = SlugHelper.GenerateSlug(news.Title ?? string.Empty);
+    var encodedId = HashId.EncodeId(news.IdNews ?? 0);
+    var canonicalUrl = $"https://dulichhat.com/bai-viet/chi-tiet-bai-viet/{encodedId}";
+    // var imageUrl = tour.ImgTitle?.Replace("../files/", "https://dulichhat.com/files/");
+}
+
+@section HeadExtra {
+    <title>@newsTitle</title>
+    <meta name="description" content="@slugTitle" />
+    <link rel="canonical" href="@canonicalUrl" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="@newsTitle" />
+    <meta property="og:description" content="@slugTitle" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:type" content="article" />
+    @* <meta property="og:image" content="@imageUrl" /> *@
+}
+
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/news/newsdetail.css" rel="stylesheet" />
+    <link href="~/css/news/news-content.css" rel="stylesheet" />
+}
+
+<div class="container-for__NewsDetail">
+    <h1 class="title-for__NewsDetail">
+        @Model.NewsForIndex.Title
+    </h1>
+    <div class="content-detail-news-for__NewsDetail">
+        @Html.Raw(Model.NewsForIndex.Content)
+    </div>
+    <h5>
+        @Model.NewsForIndex.Company
+    </h5>
+    <h6>
+        @Model.NewsForIndex.CreatedTime
+    </h6>
+</div>
+
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+    <script src="~/js/news/scroll-top.obfuscated.js"></script>
+}

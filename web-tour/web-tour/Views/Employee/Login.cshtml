@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Đăng nhập</title>
+    <link rel="icon" type="image/png" href="~/images/icon_head.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/employee/login.css" />
+    <link rel="stylesheet" href="~/css/loading-spinner.css" />
+    <link rel="stylesheet" href="~/css/notification.css" />
+</head>
+<body>
+    @await Html.PartialAsync("_LoadingSpinner")
+
+    <div class="background">
+        @* <div class="shape"></div>
+        <div class="shape"></div> *@
+    </div>
+
+    <form asp-action="Login" asp-controller="Employee" method="post">
+        <h3>ĐĂNG NHẬP</h3>
+
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" placeholder="Tài khoản" id="username" name="username" required />
+
+        <label for="password">Mật khẩu</label>
+        <div class="password-container">
+            <input type="password" placeholder="Mật khẩu" id="password" name="password" required />
+            <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+        </div>
+
+        <div class="g-recaptcha" data-sitekey="6Lf6v1crAAAAAH70snRiOTMKPW0NeDXXmrxky4fZ" data-callback="recaptchaCallback"></div>
+
+        <button type="submit" id="loginBtn" disabled>Đăng nhập</button>
+
+        <a href="/" style="display:block; text-align:center; margin-top:25px;">
+            Trở về trang chủ
+        </a>
+    </form>
+
+    @await Html.PartialAsync("_NotificationPartial")
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="~/js/loading-spinner.js" asp-append-version="true"></script>
+    <script src="~/js/notification.js"></script>
+    <script src="~/js/login.obfuscated.js"></script>
+    <script>
+        @if (TempData["Error"] != null)
+        {
+            <text> showNotification('error', '@TempData["Error"]'); </text>
+        }
+    </script>
+</body>
+</html>

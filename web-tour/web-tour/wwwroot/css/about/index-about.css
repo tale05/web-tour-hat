@@ -1,0 +1,236 @@
+﻿.about-container-for__AboutIndex {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 8px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .about-container-for__AboutIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF7F24, #efc2a4);
+        opacity: 0.8;
+    }
+
+    .about-container-for__AboutIndex h1 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #FF7F24;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+        .about-container-for__AboutIndex h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF7F24, #efc2a4);
+            border-radius: 3px;
+        }
+
+/* Section styling */
+.about-section-for-NameVie__AboutIndex,
+.about-section-for-NameEng__AboutIndex,
+.about-section-for-NameAbbr__AboutIndex,
+.about-section-for-CompanyEmail__AboutIndex,
+.about-section-for-CompanyPhone__AboutIndex,
+.about-section-for-CompanyAddress__AboutIndex,
+.about-section-for-BusinessLicenseNo__AboutIndex,
+.about-section-for-BusinessLicenseDate__AboutIndex,
+.about-section-for-IssuedBy__AboutIndex,
+.about-section-for-InternationalTravelLicenseNo__AboutIndex,
+.about-section-for-InternationalTravelLicenseDate__AboutIndex,
+.about-section-for-FacebookUrl__AboutIndex {
+    display: flex;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+    .about-section-for-NameVie__AboutIndex:hover,
+    .about-section-for-NameEng__AboutIndex:hover,
+    .about-section-for-NameAbbr__AboutIndex:hover,
+    .about-section-for-CompanyEmail__AboutIndex:hover,
+    .about-section-for-CompanyPhone__AboutIndex:hover,
+    .about-section-for-CompanyAddress__AboutIndex:hover,
+    .about-section-for-BusinessLicenseNo__AboutIndex:hover,
+    .about-section-for-BusinessLicenseDate__AboutIndex:hover,
+    .about-section-for-IssuedBy__AboutIndex:hover,
+    .about-section-for-InternationalTravelLicenseNo__AboutIndex:hover,
+    .about-section-for-InternationalTravelLicenseDate__AboutIndex:hover,
+    .about-section-for-FacebookUrl__AboutIndex:hover {
+        background-color: #ffffff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transform: translateY(-3px) translateZ(10px);
+    }
+
+/* Label styling */
+.about-label-for-NameVie__AboutIndex,
+.about-label-for-NameEng__AboutIndex,
+.about-label-for-NameAbbr__AboutIndex,
+.about-label-for-CompanyEmail__AboutIndex,
+.about-label-for-CompanyPhone__AboutIndex,
+.about-label-for-CompanyAddress__AboutIndex,
+.about-label-for-BusinessLicenseNo__AboutIndex,
+.about-label-for-BusinessLicenseDate__AboutIndex,
+.about-label-for-IssuedBy__AboutIndex,
+.about-label-for-InternationalTravelLicenseNo__AboutIndex,
+.about-label-for-InternationalTravelLicenseDate__AboutIndex,
+.about-label-for-FacebookUrl__AboutIndex,
+.about-label-for-CompanyDescription__AboutIndex {
+    min-width: 220px;
+    font-weight: 600;
+    color: #34495e;
+    position: relative;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+    .about-label-for-NameVie__AboutIndex::before,
+    .about-label-for-NameEng__AboutIndex::before,
+    .about-label-for-NameAbbr__AboutIndex::before,
+    .about-label-for-CompanyEmail__AboutIndex::before,
+    .about-label-for-CompanyPhone__AboutIndex::before,
+    .about-label-for-CompanyAddress__AboutIndex::before,
+    .about-label-for-BusinessLicenseNo__AboutIndex::before,
+    .about-label-for-BusinessLicenseDate__AboutIndex::before,
+    .about-label-for-IssuedBy__AboutIndex::before,
+    .about-label-for-InternationalTravelLicenseNo__AboutIndex::before,
+    .about-label-for-InternationalTravelLicenseDate__AboutIndex::before,
+    .about-label-for-FacebookUrl__AboutIndex::before,
+    .about-label-for-CompanyDescription__AboutIndex::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 70%;
+        background-color: #FF7F24;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+/* Value styling */
+.about-value-for-NameVie__AboutIndex,
+.about-value-for-NameEng__AboutIndex,
+.about-value-for-NameAbbr__AboutIndex,
+.about-value-for-CompanyEmail__AboutIndex,
+.about-value-for-CompanyPhone__AboutIndex,
+.about-value-for-CompanyAddress__AboutIndex,
+.about-value-for-BusinessLicenseNo__AboutIndex,
+.about-value-for-BusinessLicenseDate__AboutIndex,
+.about-value-for-IssuedBy__AboutIndex,
+.about-value-for-InternationalTravelLicenseNo__AboutIndex,
+.about-value-for-InternationalTravelLicenseDate__AboutIndex,
+.about-value-for-FacebookUrl__AboutIndex {
+    flex: 1;
+    color: #2c3e50;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+    /* Special Facebook link styling */
+    .about-value-for-FacebookUrl__AboutIndex a {
+        color: #3498db;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+        border-bottom: 1px dashed rgba(52, 152, 219, 0.5);
+        padding-bottom: 2px;
+    }
+
+        .about-value-for-FacebookUrl__AboutIndex a:hover {
+            color: #2980b9;
+            border-bottom-color: #2980b9;
+        }
+
+/* Company description section - special styling that won't affect its contents */
+.about-section-for-CompanyDescription__AboutIndex {
+    margin-top: 2rem;
+    /*background-color: #f8f9fa;*/
+    background-color: #ffffff;
+    /*padding: 1.5rem;*/
+    border-radius: 15px;
+    /*box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);*/
+}
+
+.about-label-for-CompanyDescription__AboutIndex {
+    display: block;
+    margin-bottom: 1rem;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* The container for the raw HTML content - minimal styling to avoid affecting embedded elements */
+.about-value-for-CompanyDescription__AboutIndex {
+    background: #ffffff;
+    border-radius: 12px;
+    /* No additional styling that could affect embedded content */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-container-for__AboutIndex {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .about-section-for-NameVie__AboutIndex,
+    .about-section-for-NameEng__AboutIndex,
+    .about-section-for-NameAbbr__AboutIndex,
+    .about-section-for-CompanyEmail__AboutIndex,
+    .about-section-for-CompanyPhone__AboutIndex,
+    .about-section-for-CompanyAddress__AboutIndex,
+    .about-section-for-BusinessLicenseNo__AboutIndex,
+    .about-section-for-BusinessLicenseDate__AboutIndex,
+    .about-section-for-IssuedBy__AboutIndex,
+    .about-section-for-InternationalTravelLicenseNo__AboutIndex,
+    .about-section-for-InternationalTravelLicenseDate__AboutIndex,
+    .about-section-for-FacebookUrl__AboutIndex {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .about-label-for-NameVie__AboutIndex,
+    .about-label-for-NameEng__AboutIndex,
+    .about-label-for-NameAbbr__AboutIndex,
+    .about-label-for-CompanyEmail__AboutIndex,
+    .about-label-for-CompanyPhone__AboutIndex,
+    .about-label-for-CompanyAddress__AboutIndex,
+    .about-label-for-BusinessLicenseNo__AboutIndex,
+    .about-label-for-BusinessLicenseDate__AboutIndex,
+    .about-label-for-IssuedBy__AboutIndex,
+    .about-label-for-InternationalTravelLicenseNo__AboutIndex,
+    .about-label-for-InternationalTravelLicenseDate__AboutIndex,
+    .about-label-for-FacebookUrl__AboutIndex,
+    .about-label-for-CompanyDescription__AboutIndex {
+        margin-bottom: 0.5rem;
+        min-width: auto;
+    }
+
+    .about-container-for__AboutIndex h1 {
+        font-size: 1.8rem;
+    }
+}

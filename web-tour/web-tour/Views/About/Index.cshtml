@@ -1,0 +1,76 @@
+﻿@model web_tour.Models.AllListViewModelsForIndexPage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Giới thiệu";
+}
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/about/index-about.css" rel="stylesheet" />
+}
+
+<div class="about-container-for__AboutIndex">
+    <h1>THÔNG TIN</h1>
+
+    <div class="about-section-for-NameVie__AboutIndex">
+        <span class="about-label-for-NameVie__AboutIndex">Tên tiếng Việt:</span>
+        <span class="about-value-for-NameVie__AboutIndex">@Model.CompanyForIndexAbout.NameVie</span>
+    </div>
+
+    <div class="about-section-for-NameEng__AboutIndex">
+        <span class="about-label-for-NameEng__AboutIndex">Tên tiếng Anh:</span>
+        <span class="about-value-for-NameEng__AboutIndex">@Model.CompanyForIndexAbout.NameEng</span>
+    </div>
+
+    <div class="about-section-for-NameAbbr__AboutIndex">
+        <span class="about-label-for-NameAbbr__AboutIndex">Tên viết tắt:</span>
+        <span class="about-value-for-NameAbbr__AboutIndex">@Model.CompanyForIndexAbout.NameAbbr</span>
+    </div>
+
+    <div class="about-section-for-CompanyEmail__AboutIndex">
+        <span class="about-label-for-CompanyEmail__AboutIndex">Email:</span>
+        <span class="about-value-for-CompanyEmail__AboutIndex">@Model.CompanyForIndexAbout.CompanyEmail</span>
+    </div>
+
+    <div class="about-section-for-CompanyPhone__AboutIndex">
+        <span class="about-label-for-CompanyPhone__AboutIndex">Số điện thoại:</span>
+        <span class="about-value-for-CompanyPhone__AboutIndex">@Model.CompanyForIndexAbout.CompanyPhone</span>
+    </div>
+
+    <div class="about-section-for-CompanyAddress__AboutIndex">
+        <span class="about-label-for-CompanyAddress__AboutIndex">Địa chỉ:</span>
+        <span class="about-value-for-CompanyAddress__AboutIndex">@Model.CompanyForIndexAbout.CompanyAddress</span>
+    </div>
+
+    <div class="about-section-for-BusinessLicenseNo__AboutIndex">
+        <span class="about-label-for-BusinessLicenseNo__AboutIndex">Số GPKD:</span>
+        <span class="about-value-for-BusinessLicenseNo__AboutIndex">@Model.CompanyForIndexAbout.BusinessLicenseNo</span>
+    </div>
+
+    <div class="about-section-for-BusinessLicenseDate__AboutIndex">
+        <span class="about-label-for-BusinessLicenseDate__AboutIndex">Ngày cấp:</span>
+        <span class="about-value-for-BusinessLicenseDate__AboutIndex">@Model.CompanyForIndexAbout.BusinessLicenseDate</span>
+    </div>
+
+    <div class="about-section-for-IssuedBy__AboutIndex">
+        <span class="about-label-for-IssuedBy__AboutIndex">Nơi cấp:</span>
+        <span class="about-value-for-IssuedBy__AboutIndex">@Model.CompanyForIndexAbout.IssuedBy</span>
+    </div>
+
+    <div class="about-section-for-InternationalTravelLicenseNo__AboutIndex">
+        <span class="about-label-for-InternationalTravelLicenseNo__AboutIndex">Số GPLH-QT:</span>
+        <span class="about-value-for-InternationalTravelLicenseNo__AboutIndex">@Model.CompanyForIndexAbout.InternationalTravelLicenseNo</span>
+    </div>
+
+    <div class="about-section-for-InternationalTravelLicenseDate__AboutIndex">
+        <span class="about-label-for-InternationalTravelLicenseDate__AboutIndex">Ngày cấp:</span>
+        <span class="about-value-for-InternationalTravelLicenseDate__AboutIndex">@Model.CompanyForIndexAbout.InternationalTravelLicenseDate</span>
+    </div>
+
+    <div class="about-section-for-CompanyDescription__AboutIndex">
+        <div class="about-value-for-CompanyDescription__AboutIndex">@Html.Raw(Model.CompanyForIndexAbout.CompanyDescription)</div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+}

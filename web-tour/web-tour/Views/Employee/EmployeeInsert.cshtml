@@ -1,0 +1,79 @@
+﻿@model web_tour.Models.EmployeeModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Thêm nhân viên";
+}
+<link href="~/css/employee/employeeinsert.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="employee-insert">
+    <div class="employee-insert__card">
+        <div class="employee-insert__header">
+            <h1 class="employee-insert__title">Thêm nhân viên mới</h1>
+            <div class="employee-insert__underline"></div>
+        </div>
+
+        <form asp-action="EmployeeInsert" asp-controller="Employee" method="post" enctype="multipart/form-data" class="employee-insert__form">
+            <div class="employee-insert__group">
+                <label for="FirstName" class="employee-insert__label">Tên nhân viên</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="FirstName" type="text" class="employee-insert__input" required placeholder="Nhập tên nhân viên" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="LastName" class="employee-insert__label">Họ nhân viên</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="LastName" type="text" class="employee-insert__input" required placeholder="Nhập họ nhân viên" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="Email" class="employee-insert__label">Email</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="Email" type="email" class="employee-insert__input" required placeholder="Nhập email nhân viên" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="Phone" class="employee-insert__label">Phone</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="Phone" type="text" class="employee-insert__input" required placeholder="Nhập điện thoại" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="UserName" class="employee-insert__label">UserName</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="UserName" type="text" class="employee-insert__input" required placeholder="Nhập UserName" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="Password" class="employee-insert__label">Password</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="Password" type="password" class="employee-insert__input" required placeholder="Nhập Password" />
+                </div>
+            </div>
+
+            <div class="employee-insert__actions">
+                <button type="submit" class="employee-insert__submit-btn">
+                    <span class="employee-insert__btn-icon">+</span>
+                    <span class="employee-insert__btn-text">Thêm mới</span>
+                </button>
+
+                <a href="@Url.Action("EmployeeManager", "Employee")" class="btn btn-secondary-custom ms-2">
+                    <i class="fas fa-arrow-left"></i> Trở về
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("_NotificationPartial")
+<script src="~/js/notification.js"></script>
+<script>
+    @if (ViewData["Error"] != null)
+    {
+        <text> showNotification('error', '@ViewData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+</script>

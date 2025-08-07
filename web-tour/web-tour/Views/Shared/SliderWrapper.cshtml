@@ -1,0 +1,32 @@
+﻿@model AllListViewModelsForIndexPage
+
+<link rel="stylesheet" href="~/css/homePartial/sliderwrapper.css" />
+
+<div class="slide-wrapper">
+    @if (Model.SliderImages != null)
+    {
+        foreach (var img in Model.SliderImages)
+        {
+            <img class="mySlides" src="@img" />
+        }
+    }
+    else
+    {
+        <img class="mySlides" src="~/images/empty.png" />
+    }
+
+    <div class="slide-controls">
+        <button class="prev-slide">&#10094;</button>
+        <button class="next-slide">&#10095;</button>
+    </div>
+</div>
+
+<div class="slide-indicators">
+    @if (Model.SliderImages != null)
+    {
+        for (int i = 0; i < Model.SliderImages.Count; i++)
+        {
+            <span class="indicator" data-index="@(i + 1)"></span>
+        }
+    }
+</div>

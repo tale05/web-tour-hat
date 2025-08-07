@@ -1,0 +1,83 @@
+﻿@model List<web_tour.Models.EmployeeModel>
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Quản lý nhân viên";
+}
+
+<link href="~/css/employee/employeemanager.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="container-category-management">
+    <h1>Danh sách tài khoản nhân viên</h1>
+
+    <div class="text-end w-100 mb-3">
+        <a href="@Url.Action("EmployeeInsert", "Employee")" class="btn btn-primary" id="add-category-btn" style="border-radius:20px; text-decoration:none">Thêm thông tin nhân viên mới</a>
+    </div>
+
+    <br />
+    @if (Model == null)
+    {
+        <h2 style="padding: 30px 0 0 0px; color:orangered">
+            Chưa có dữ liệu
+        </h2>
+    }
+    else
+    {
+        <h3 style="padding: 15px 0; color:orangered">
+            Tổng số tài khoản nhân viên hiện có là: @Model.Count
+        </h3>
+        <table class="table table-hover table-bordered align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Tên nhân viên</th>
+                    <th>Email/Phone</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdEmployee</td>
+                        <td>@item.LastName @item.FirstName</td>
+                        <td>@item.Email</td>
+                        <td>@item.UserName</td>
+                        <td class="text-center">
+                            @if (!string.IsNullOrEmpty(item.IdEmployee))
+                            {
+                                <a href="@Url.Action("EmployeeEdit", "Employee", new { id = item.IdEmployee.Trim() })"
+                                   class="button-edit-Category">
+                                    <i class="fas fa-edit"></i> Chỉnh sửa
+                                </a>
+                                <a href="@Url.Action("RemoveCategory", "Employee", new { id = item.IdEmployee })"
+                                   class="button-remove-Category"
+                                   onclick="return confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');">
+                                    <i class="fas fa-trash-alt"></i> Xoá
+                                </a>
+                            }
+                            else
+                            {
+                                <p>Hiện tại tạm ẩn</p>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+
+<script src="~/js/notification.js"></script>
+<script>
+    @if (TempData["Error"] != null)
+    {
+        <text> showNotification('error', '@TempData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+</script>

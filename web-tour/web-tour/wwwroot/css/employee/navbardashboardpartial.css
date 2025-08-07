@@ -1,0 +1,99 @@
+﻿.container-navbar-dashboard {
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.navbar-dashboard {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #FFD8A6, #F7931E);
+    border-radius: 20px;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    padding: 20px 0;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.2);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+    .navbar-dashboard::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+
+    .navbar-dashboard .logo {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px 30px;
+    }
+
+        .navbar-dashboard .logo img {
+            max-width: 100%;
+            height: 75px;
+            background: none;
+            border-radius: 10px;
+        }
+
+    .navbar-dashboard .menu {
+        list-style: none;
+        padding: 10px 10px;
+        margin: 0;
+        background-color: none;
+    }
+
+        .navbar-dashboard .menu li {
+            margin: 10px 0;
+            height: 40px;
+        }
+
+            .navbar-dashboard .menu li a {
+                text-decoration: none;
+                color: white;
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
+                border-radius: 5px;
+                transition: background-color 0.1s ease-in;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+                .navbar-dashboard .menu li a:hover {
+                    /*border: solid 3px #f57c00;
+                    border-radius: 20px;*/
+                    border-radius: 5px;
+                    background-color: #f57c00;
+                    color: azure;
+                }
+
+                .navbar-dashboard .menu li a i {
+                    margin-right: 10px;
+                    font-size: 20px;
+                }
+
+    .navbar-dashboard .badge {
+        background-color: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+        margin-left: auto;
+    }
+
+.menu li.active a {
+    background-color: #f57c00;
+    color: azure;
+    border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .navbar-dashboard .logo img {
+        max-width: 100%;
+        height: 40px;
+    }
+}

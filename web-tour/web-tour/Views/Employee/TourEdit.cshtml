@@ -1,0 +1,100 @@
+﻿@model web_tour.Models.TourUpdateViewModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Chỉnh sửa tour";
+}
+<link href="~/css/employee/touredit.css" rel="stylesheet" />
+
+<div class="tour-update-container__TourEdit_cshtml">
+    <h2 class="tour-update-title__TourEdit_cshtml">Cập nhật thông tin tour</h2>
+
+    <form asp-action="UpdateTour" asp-controller="Employee" method="post" enctype="multipart/form-data">
+        @* Hidden ID *@
+        <input type="hidden" asp-for="TourId" />
+
+        <div class="form-group__TourEdit_cshtml">
+            <label>Danh mục</label>
+            <select asp-for="CategoryId" class="form-control__TourEdit_cshtml" required>
+                <option value="">-- Chọn danh mục --</option>
+                @foreach (var category in Model.Categories)
+                {
+                    <option value="@category.CategoryId">@category.NameCategory</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group__TourEdit_cshtml">
+            <label>Tiêu đề tour</label>
+            <input asp-for="Title" class="form-control__TourEdit_cshtml" required />
+        </div>
+
+        <div class="form-group__TourEdit_cshtml">
+            <label>Chọn ảnh:</label>
+            <input asp-for="ImgTitle"
+                   type="text"
+                   id="ImgTitle"
+                   name="ImgTitle"
+                   class="form-control-file__TourEdit_cshtml" 
+                   readonly="readonly"/>
+            <button type="button" onclick="openFileManager()" style="width:200px">Click để mở form chọn ảnh</button>
+            <img id="previewImage"
+                 src="@(!string.IsNullOrEmpty(Model.ImgTitle) ? Model.ImgTitle : Url.Content("~/images/empty.png"))"
+                 alt="Chưa có ảnh nào được chọn"
+                 style="max-width: 600px; height: auto; border: 1px solid #ccc; padding: 5px;
+            @(string.IsNullOrEmpty(Model.ImgTitle) ? "display: none;" : "display: block;")"
+                 onerror="this.onerror=null; this.src='@Url.Content("~/images/empty.png")';" />
+        </div>
+
+        <div class="form-group__TourEdit_cshtml">
+            <label>Trạng thái hiển thị</label>
+            <select asp-for="StatusProduct" class="form-control__TourEdit_cshtml">
+                <option value="true" selected="@(Model.StatusProduct ? "selected" : null)">Đang hiển thị</option>
+                <option value="false" selected="@(Model.StatusProduct ? null : "selected")">Đã ẩn</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary__TourEdit_cshtml">Cập nhật tour</button>
+        <a href="@Url.Action("TourManagement", "Employee")" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function openFileManager() {
+            // Mở popup elFinder
+            var width = 900;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+
+            window.open(
+                '/FileManager/SelectImage',
+                'FileManager',
+                'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+            );
+        }
+
+        // Nhận đường dẫn từ elFinder và hiển thị ảnh
+        function SetImageUrl(url) {
+        try {
+                var relativeUrl = url;
+                // Nếu url là dạng tuyệt đối, ví dụ: https://localhost:7231/files/tourmiennam.jpg
+                var origin = window.location.origin;
+                if (url.startsWith(origin)) {
+                    relativeUrl = url.substring(origin.length);
+                }
+                document.getElementById('ImgTitle').value = relativeUrl;
+                const img = document.getElementById('previewImage');
+                img.src = relativeUrl;
+                img.style.display = "block";
+            } catch (e) {
+                document.getElementById('ImgTitle').value = url;
+                const img = document.getElementById('previewImage');
+                img.src = url;
+                img.style.display = "block";
+            }
+        }
+
+        window.SetImageUrl = SetImageUrl;
+    </script>
+}

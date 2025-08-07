@@ -1,0 +1,283 @@
+﻿/* News Index Page Styling */
+
+.container-for__NewsIndex {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .container-for__NewsIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF7E5F, #FEB47B, #FF7E5F);
+        background-size: 200% auto;
+        animation: gradient 3s linear infinite;
+    }
+
+.header-title-for__NewsIndex {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+    .header-title-for__NewsIndex h2 {
+        font-size: 2.2rem;
+        color: #2d3748;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.8rem;
+    }
+
+        .header-title-for__NewsIndex h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF7E5F, #FEB47B);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+    .header-title-for__NewsIndex:hover h2::after {
+        width: 120px;
+    }
+
+.main-content-for__NewsIndex {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.news-card-for__NewsIndex {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 10px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    transform: translateZ(0);
+    position: relative;
+}
+
+    .news-card-for__NewsIndex:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12), 0 10px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .news-card-for__NewsIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: 25px;
+    }
+
+    .news-card-for__NewsIndex:hover::before {
+        opacity: 1;
+    }
+
+.news-image-for__NewsIndex {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card-for__NewsIndex:hover .news-image-for__NewsIndex {
+    transform: scale(1.05);
+}
+
+.news-title-for__NewsIndex {
+    /* Kiểu chữ & bố cục gốc */
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    padding: 1.2rem 1.5rem 0.8rem;
+    margin: 0;
+    /* ---- Giới hạn 2 dòng ---- */
+    line-height: 1.4em; /* 1 dòng cao 1.4em */
+    max-height: 4em; /* khóa cao đúng 2 dòng */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* CHỈ 2 dòng */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-card-for__NewsIndex:hover .news-title-for__NewsIndex::after {
+    width: 60px;
+    background: #FF7E5F;
+}
+
+.news-idcompany-for__NewsIndex {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #718096;
+    padding: 0.8rem 1.5rem 0.4rem;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.news-createdtime-for__NewsIndex {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #a0aec0;
+    padding: 0.4rem 1.5rem 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+    .news-createdtime-for__NewsIndex::before {
+        content: "🕒";
+        margin-right: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+.news-card-for__NewsIndex:hover .news-title-for__NewsIndex {
+    color: #FF7E5F;
+}
+
+.news-card-for__NewsIndex:hover .news-idcompany-for__NewsIndex {
+    color: #4a5568;
+}
+
+/* Animation keyframes */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in animation to news cards */
+.news-card-for__NewsIndex {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+    .news-card-for__NewsIndex:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .container-for__NewsIndex {
+        margin: 2rem;
+        padding: 1.5rem;
+    }
+
+    .header-title-for__NewsIndex h2 {
+        font-size: 2rem;
+    }
+
+    .main-content-for__NewsIndex {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-for__NewsIndex {
+        margin: 1.5rem;
+        padding: 1.2rem;
+        border-radius: 20px;
+    }
+
+    .header-title-for__NewsIndex h2 {
+        font-size: 1.8rem;
+    }
+
+    .main-content-for__NewsIndex {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .news-title-for__NewsIndex {
+        font-size: 1.1rem;
+        padding: 20px 18px;
+        height: 80px;
+    }
+
+    .news-idcompany-for__NewsIndex {
+        padding: 0.6rem 1.2rem 0.3rem;
+    }
+
+    .news-createdtime-for__NewsIndex {
+        padding: 0.3rem 1.2rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-for__NewsIndex {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .main-content-for__NewsIndex {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .news-image-for__NewsIndex {
+        height: 180px;
+    }
+}

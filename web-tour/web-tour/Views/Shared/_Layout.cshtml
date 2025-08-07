@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title | Du lịch H.A.T</title>
+    <link rel="icon" type="image/png" href="~/images/icon_head.png" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/loading-spinner.css" />
+
+    @RenderSection("Styles", required: false)
+    @RenderSection("HeadExtra", required: false)
+</head>
+<body>
+    @await Html.PartialAsync("_LoadingSpinner")
+    <nav class="navbar-fixed">
+        @await Html.PartialAsync("NavbarPartial")
+    </nav>
+    <header class="header-area">
+        <div class="slider-sticky">
+            @await Html.PartialAsync("SliderWrapper")
+        </div>
+    </header>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        @await Html.PartialAsync("FooterPartial")
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/loading-spinner.js" asp-append-version="true"></script>
+    <script src="~/js/homePartial/navbarpartial.obfuscated.js" asp-append-version="true"></script>
+    <script src="~/js/homePartial/sliderwrapper.obfuscated.js" asp-append-version="true"></script>
+    <script src="~/js/btn-scroll-up-down.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@inject web_tour.Helpers.HashIdHelper HashId
+@model web_tour.Models.AllListViewModelsForIndexPage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Bài viết";
+}
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/news/newsindex.css" rel="stylesheet" />
+}
+
+<div class="container-for__NewsIndex">
+    @if (!Model.ListNewsForIndex.Any())
+    {
+        <h3 style="color:orangered; font-weight:bold">Chưa có bài viết nào</h3>
+    }
+    else
+    {
+        <div class="header-title-for__NewsIndex">
+            <h2>Các bài viết nổi bật</h2>
+        </div>
+        <div class="main-content-for__NewsIndex">
+            @foreach (var item in Model.ListNewsForIndex)
+            {
+                var encodedId = HashId.EncodeId(item.IdNews ?? 0);
+                <a href="@Url.Action("NewsDetail", "News", new { encodedId })" class="tour-card-link">
+                    <div class="news-card-for__NewsIndex">
+                        @if (item.ImgNews != null)
+                        {
+                            <img src="@Url.Content(item.ImgNews)" alt="News Image" class="news-image-for__NewsIndex" />
+                        }
+                        else
+                        {
+                            <img src="~/images/empty.png" alt="News Image" class="news-image-for__NewsIndex" />
+                        }
+                        <h3 class="news-title-for__NewsIndex">
+                            @item.Title
+                        </h3>
+                        <h4 class="news-idcompany-for__NewsIndex">
+                            @item.Company
+                        </h4>
+                        <h5 class="news-createdtime-for__NewsIndex">
+                            @item.CreatedTime
+                        </h5>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+</div>
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+}

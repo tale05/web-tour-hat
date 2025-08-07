@@ -1,0 +1,82 @@
+﻿@model List<web_tour.Models.NewsModel>
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Quản lý bài báo";
+}
+
+<link href="~/css/employee/employeemanager.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="container-category-management">
+    <h1>Danh sách bài viết</h1>
+
+    <div class="text-end w-100 mb-3">
+        <a href="@Url.Action("NewsInsert", "Employee")" class="btn btn-primary" id="add-category-btn" style="border-radius:20px; text-decoration:none">Thêm bài viết mới</a>
+    </div>
+
+    <br />
+    <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã</th>
+                <th>Ảnh tiêu đề</th>
+                <th>Công ty</th>
+                <th>Tiêu đề</th>
+                <th>Thời gian tạo</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdNews</td>
+                    <td style="display:flex; align-items:center; justify-content:center;">
+                        @if (item.ImgNews != null)
+                        {
+                            <img src="@Url.Content(item.ImgNews)" alt="Ảnh tiêu đề" class="img-thumbnail" style="width: 100px; height: 100px;" />
+                        }
+                        else
+                        {
+                            <p>Chưa có ảnh</p>
+                        }
+                    </td>
+                    <td>@item.IdCompany</td>
+                    <td>@item.Title</td>
+                    <td>@item.CreatedTime</td>
+                    <td class="text-center">
+                        @if (item.IdNews != null)
+                        {
+                            <a href="@Url.Action("NewsEdit", "Employee", new { id = item.IdNews })"
+                               class="button-edit-Category">
+                                <i class="fas fa-edit"></i> Chỉnh sửa
+                            </a>
+                            <a href="@Url.Action("RemoveNews", "Employee", new { id = item.IdNews })"
+                               class="button-remove-Category"
+                               onclick="return confirm('Bạn có chắc chắn muốn xoá bài báo này không?');">
+                                <i class="fas fa-trash-alt"></i> Xoá
+                            </a>
+                        }
+                        else
+                        {
+                            <p>Hiện tại tạm ẩn</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script src="~/js/notification.js"></script>
+<script>
+    @if (TempData["Error"] != null)
+    {
+        <text> showNotification('error', '@TempData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+</script>

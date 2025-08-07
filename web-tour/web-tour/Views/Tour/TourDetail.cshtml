@@ -1,0 +1,78 @@
+﻿@using web_tour.Helpers
+@model web_tour.Models.AllListViewModelsForIndexPage
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var tour = Model.TourDetailFromIndexViewModel;
+    var pageTitle = $"{tour.Title} - Du lịch H.A.T";
+    ViewBag.Title = pageTitle;
+
+    var metaDescription = tour.Description ?? tour.Title;
+    var slugTitle = SlugHelper.GenerateSlug(tour.Title ?? string.Empty);
+    var canonicalUrl = $"https://dulichhat.com/tour/chi-tiet-tour/{slugTitle}";
+    // var imageUrl = tour.ImgTitle?.Replace("../files/", "https://dulichhat.com/files/");
+}
+
+@section HeadExtra {
+    <title>@pageTitle</title>
+    <meta name="description" content="@metaDescription" />
+    <link rel="canonical" href="@canonicalUrl" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="@pageTitle" />
+    <meta property="og:description" content="@metaDescription" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:type" content="article" />
+    @* <meta property="og:image" content="@imageUrl" /> *@
+}
+
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/tour/tourdetail.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+}
+
+<div class="container-for__tourDetail-Tour">
+    <h2 class="title-for__tourDetail-Tour"><i class="fa-solid fa-location-dot"></i>  @Model.TourDetailFromIndexViewModel.Title</h2>
+    <p class="priceAfter-for__tourDetail-Tour"><i class="fa-solid fa-tag"></i>  Giá khuyến mãi: @Model.TourDetailFromIndexViewModel.PriceAfter</p>
+    <p class="priceBefore-for__tourDetail-Tour">Giá gốc: @Model.TourDetailFromIndexViewModel.PriceBefore</p>
+    <br />
+    <img src="@Model.TourDetailFromIndexViewModel.ImgTitle"
+         class="imageTitle-for__tourDetail-Tour" />
+    <br />
+    @* <p class="description-for__tourDetail-Tour">@Model.TourDetailFromIndexViewModel.Description</p> *@
+    <div class="content-for__tourDetail-Tour">
+        @Html.Raw(
+                 Model.TourDetailFromIndexViewModel.Content.Replace(
+                 "../files/", "https://dulichhat.com/files/"
+                 )
+                 )
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector('.content-for__tourDetail-Tour');
+            const tables = container.querySelectorAll('table');
+
+            tables.forEach(function (table) {
+                const rows = table.querySelectorAll('tr');
+
+                if (rows.length >= 2) {
+                    const firstRow = rows[0];
+                    const columns = firstRow.querySelectorAll('th, td');
+                    if (columns.length >= 2) {
+                        table.classList.add('is-large-table');
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'table-responsive';
+                        table.parentNode.insertBefore(wrapper, table);
+                        wrapper.appendChild(table);
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,8 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Xem tài liệu: " + ViewBag.FileName;
+}
+<link rel="icon" type="image/png" href="~/images/icon_head.png" />
+<div>
+    @Html.Raw(ViewBag.HtmlContent)
+</div>

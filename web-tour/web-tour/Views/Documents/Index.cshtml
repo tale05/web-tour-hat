@@ -1,0 +1,25 @@
+﻿@model List<string>
+@{
+    Layout = null;
+    ViewData["Title"] = "Tài liệu Markdown";
+}
+<link href="~/css/documents/index.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="~/images/icon_head.png" />
+<div class="documents-container">
+    <h2>📄 Danh sách tài liệu</h2>
+
+    <ul>
+        @foreach (var file in Model)
+        {
+            <li>
+                <a asp-controller="Documents" asp-action="ViewDoc" asp-route-fileName="@file">
+                    📘 @file
+                </a>
+            </li>
+        }
+    </ul>
+
+    <form asp-controller="Documents" asp-action="Logout" method="post">
+        <button type="submit">🔒 Đăng xuất</button>
+    </form>
+</div>

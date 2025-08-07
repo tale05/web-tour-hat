@@ -1,0 +1,181 @@
+﻿@using web_tour.Helpers
+@model web_tour.Models.AllListViewModelsForIndexPage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh sách tour";
+
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var currentSlug = ViewContext.RouteData.Values["slug"]?.ToString(); // null nếu là Index
+}
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/tour/indextour.css" rel="stylesheet" />
+}
+
+<div class="application-section__HomeIndex">
+    @foreach (var item in Model.ListNameAndImageCategories)
+    {
+        <a href="@Url.Action("GetListTourByCategory", "Tour", new { slug = SlugHelper.GenerateSlug(item.NameCategory) })">
+            <div class="application-card__HomeIndex">
+                <img src="@item.ImgCategory" alt="Sports Performance" />
+                <div class="overlay__HomeIndex">
+                    <h2>@item.NameCategory</h2>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+@if (!Model.ListTourForIndex.Any())
+{
+    <div class="tour-notification-empty__TourIndex">
+        😢 Không có tour du lịch nào cần tìm kiếm.
+    </div>
+}
+else
+{
+    <div class="tour-index-wrapper__TourIndex">
+        <div class="container-tours__TourIndex">
+            <h1 class="section-title__TourIndex">Tất cả tour du lịch</h1>
+            @foreach (var item in Model.ListTourForIndex)
+            {
+                <div class="tour-card__TourIndex">
+                    @{
+                        var slug = SlugHelper.GenerateSlug(item.NameTour);
+                    }
+                    <a href="@Url.Action("TourDetail", "Tour", new { slug = slug })" class="tour-card-link">
+                        <div class="tour-card-image__TourIndex">
+                            <img src="@item.ImgTour" alt="@item.NameTour" />
+                            <div class="tour-card-overlay__TourIndex">
+                                <span class="view-details__TourIndex">Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                        <div class="tour-card-content__TourIndex">
+                            <h3 class="tour-title__TourIndex">
+                                <i class="fa-solid fa-location-dot"></i> @item.NameTour
+                            </h3>
+                            <p class="tour-price__TourIndex">
+                                <span class="price-before__TourIndex">Giá gốc: @item.PriceBefore</span>
+                                <span class="price-after__TourIndex">
+                                    <i class="fa-solid fa-tag"></i> @item.PriceAfter
+                                </span>
+                            </p>
+                            <p style="font-style: italic; color: #666; font-size: 12px; letter-spacing: 0.5px; font-weight: 500; margin: 0 0 10px 0; text-align: center;">
+                                © Bản quyền thuộc về Công ty Du lịch H.A.T
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <div class="container-list-category__TourIndex">
+            <p>Danh mục</p>
+
+            <a href="@Url.Action("Index", "Tour")"
+               class="@(currentAction == "Index" ? "active" : "")">
+                Tất cả
+            </a>
+
+            @foreach (var item in Model.ListNameAndImageCategories)
+            {
+                var slug = SlugHelper.GenerateSlug(item.NameCategory);
+                <a href="@Url.Action("GetListTourByCategory", "Tour", new { slug = slug })"
+                   class="@(currentAction == "GetListTourByCategory" && currentSlug == slug ? "active" : "")">
+                    @item.NameCategory
+                </a>
+            }
+        </div>
+    </div>
+}
+
+@{
+    var categoryId = ViewBag.CategoryId as string;
+    var actionName = string.IsNullOrEmpty(categoryId) ? "Index" : "GetListTourByCategory";
+}
+
+<div class="pagination__TourIndex">
+    @for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+    {
+        <a href="@Url.Action(actionName, "Tour", new { id = categoryId, page = i })"
+           class="@(i == (int)ViewBag.CurrentPage ? "active-page__TourIndex" : "")">
+            @i
+        </a>
+    }
+</div>
+
+@* @if (Model.ListTourRecentlyViewed != null && Model.ListTourRecentlyViewed.Any())
+{
+    <div class="main-content-recently-viewed__TourIndex">
+        <p>Xem gần đây</p>
+        <div class="container-recently-viewed__TourIndex" id="recent-tour-container">
+            @foreach (var item in Model.ListTourRecentlyViewed)
+            {
+                var slug = SlugHelper.GenerateSlug(item.NameTour);
+                <a href="@Url.Action("TourDetail", "Tour", new { slug = slug })">
+                    <div class="recent-tour-card__TourIndex">
+                        <img src="@item.ImgTour" alt="@item.NameTour" />
+                        <span>@item.NameTour</span>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p>Chưa có dữ liệu</p>
+} *@
+
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+    <script>
+        const slider = document.getElementById('recent-tour-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // --- Mouse event ---
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            slider.classList.add('active');
+            e.preventDefault(); // Ngăn cuộn dọc
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // độ nhạy
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // --- Touch event ---
+        let touchStartX = 0;
+        let touchScrollLeft = 0;
+
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].pageX - slider.offsetLeft;
+            touchScrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - touchStartX) * 1.5;
+            slider.scrollLeft = touchScrollLeft - walk;
+            e.preventDefault(); // ngăn cuộn dọc
+        }, { passive: false }); // bắt buộc để preventDefault có hiệu lực
+    </script>
+}

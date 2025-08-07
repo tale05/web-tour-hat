@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Ảnh Feedback";
+}
+@section Styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="~/css/feedback/feedbackindex.css" rel="stylesheet" />
+}
+
+<div class="feedback-section">
+    <div class="feedback-title">
+        Ảnh Feedback
+    </div>
+    <div id="imageContainer" class="image-grid"></div>
+</div>
+
+<div id="lightbox">
+    <div class="lightbox-controls">
+        <i id="prevBtn" class="fas fa-chevron-left"></i>
+        <i id="nextBtn" class="fas fa-chevron-right"></i>
+    </div>
+    <img id="lightboxImage" src="" alt="Preview" />
+</div>
+
+@section Scripts {
+    <script src="~/js/feedback/feedback.obfuscated.js"></script>
+}

@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chọn ảnh</title>
+    <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="~/lib/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/lib/elfinder/css/theme.min.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/lib/elfinder/js/elfinder.min.js"></script>
+</head>
+<body>
+    <div id="elfinder"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#elfinder').elfinder({
+                baseUrl: '@Url.Content("~/lib/elfinder/")',
+                url: '/el-finder-file-system/connector',
+                lang: 'vi',
+                getFileCallback: function (file) {
+                    if (window.opener && typeof window.opener.SetImageUrl === "function") {
+                        window.opener.SetImageUrl(file.url);
+                        window.close();
+                    } else {
+                        alert("Không thể truyền đường dẫn về trang cha.");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

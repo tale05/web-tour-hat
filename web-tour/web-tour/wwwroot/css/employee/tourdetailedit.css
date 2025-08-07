@@ -1,0 +1,149 @@
+﻿/* Đặt lại một số mặc định */
+.container-input-for__tourDetailManager input,
+.container-input-for__tourDetailManager textarea,
+.container-button-for__tourDetailManager button {
+    box-sizing: border-box;
+}
+
+/* Container chính full width */
+.container-input-for__tourDetailManager {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+/* Nhóm input + label */
+.group-TourDetailId__tourDetailManager,
+.group-TourId__tourDetailManager,
+.group-Description__tourDetailManager,
+.group-Content__tourDetailManager,
+.group-PriceBefore__tourDetailManager,
+.group-PriceAfter__tourDetailManager {
+    margin-bottom: 16px;
+}
+
+    /* Label */
+    .group-TourDetailId__tourDetailManager label,
+    .group-TourId__tourDetailManager label,
+    .group-Description__tourDetailManager label,
+    .group-Content__tourDetailManager label,
+    .group-PriceBefore__tourDetailManager label,
+    .group-PriceAfter__tourDetailManager label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        font-size: 15px;
+        color: #333;
+    }
+
+/* Các input */
+.input-TourDetailId__tourDetailManager,
+.input-TourId__tourDetailManager,
+.input-Description__tourDetailManager,
+.input-PriceBefore__tourDetailManager,
+.input-PriceAfter__tourDetailManager {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+/* Textarea giữ nguyên kích thước */
+#input-Content__tourDetailManager {
+    width: 794px !important;
+    height: 1123px !important;
+    padding: 10px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    resize: none;
+    font-size: 16px;
+}
+
+/* Buttons */
+.button-submit__tourDetailManager,
+.button-back__tourDetailManager {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.button-submit__tourDetailManager {
+    background-color: #4CAF50; /* Màu xanh lá cây */
+    color: white;
+}
+
+    /* Hover hiệu ứng viền cam */
+    .input-TourDetailId__tourDetailManager:hover,
+    .input-TourId__tourDetailManager:hover,
+    .input-Description__tourDetailManager:hover,
+    .input-PriceBefore__tourDetailManager:hover,
+    .input-PriceAfter__tourDetailManager:hover,
+    #input-Content__tourDetailManager:hover,
+    .button-submit__tourDetailManager:hover,
+    .button-back__tourDetailManager:hover {
+        border-color: orange;
+        box-shadow: 0 4px 8px rgba(255, 165, 0, 0.3);
+    }
+
+/* Bỏ viền đen khi focus (hoặc tuỳ chỉnh đẹp hơn) */
+.input-TourDetailId__tourDetailManager:focus,
+.input-TourId__tourDetailManager:focus,
+.input-Description__tourDetailManager:focus,
+.input-PriceBefore__tourDetailManager:focus,
+.input-PriceAfter__tourDetailManager:focus,
+#input-Content__tourDetailManager:focus {
+    outline: none; /* Bỏ outline mặc định */
+    border-color: orange; /* Tô viền cam khi focus */
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.8); /* Tạo bóng cam đẹp hơn */
+}
+
+
+/* Container button */
+.container-button-for__tourDetailManager {
+    margin-top: 16px;
+    text-align: right;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    .container-input-for__tourDetailManager {
+        padding: 12px;
+    }
+
+    .input-TourDetailId__tourDetailManager,
+    .input-TourId__tourDetailManager,
+    .input-Description__tourDetailManager,
+    .input-PriceBefore__tourDetailManager,
+    .input-PriceAfter__tourDetailManager {
+        font-size: 14px;
+    }
+
+    #input-Content__tourDetailManager {
+        max-width: 260px;
+        height: auto !important;
+        min-height: 500px;
+    }
+
+    .button-submit__tourDetailManager,
+    .button-back__tourDetailManager {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .container-button-for__tourDetailManager {
+        text-align: center;
+    }
+}

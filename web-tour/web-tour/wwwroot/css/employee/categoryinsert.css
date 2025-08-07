@@ -1,0 +1,218 @@
+﻿.category-insert {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.category-insert__card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border: none;
+}
+
+.category-insert__header {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.category-insert__title {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+.category-insert__underline {
+    height: 4px;
+    width: 50px;
+    background-color: #f58220;
+    border-radius: 2px;
+    margin-top: 5px;
+}
+
+.category-insert__form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.category-insert__group {
+    margin-bottom: 20px;
+}
+
+.category-insert__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.category-insert__input,
+.category-insert__select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .category-insert__input:focus,
+    .category-insert__select:focus {
+        border-color: rgba(40, 167, 69, 0.5);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    }
+
+/* ==== CUSTOM STYLE CHO CHỌN ẢNH ==== */
+.category-insert__file-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+    /* Ô đường dẫn ảnh */
+    .category-insert__file-container input[type="text"] {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px 14px;
+        font-size: 0.95rem;
+        color: #555;
+        cursor: not-allowed;
+    }
+
+    /* Nút mở form ảnh */
+    .category-insert__file-container button {
+        background: linear-gradient(to right, #f58220, #fbb034);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        width: fit-content;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .category-insert__file-container button:hover {
+            background: linear-gradient(to right, #f76b1c, #ffb347);
+            transform: translateY(-2px);
+        }
+
+        .category-insert__file-container button:active {
+            transform: translateY(0);
+        }
+
+/* Preview ảnh */
+#previewImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+/* ==== ACTION BUTTONS ==== */
+.category-insert__actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.category-insert__submit-btn,
+.category-insert__back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.category-insert__submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+    .category-insert__submit-btn:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+    }
+
+.category-insert__back-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+
+    .category-insert__back-btn:hover {
+        background-color: #e0a800;
+        transform: translateY(-2px);
+    }
+
+/* Nút trở về (a.btn) */
+.category-insert__form .btn-secondary-custom {
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    background: linear-gradient(to bottom, #FFD580, #FF9900);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    height: 50px;
+    padding: 12px 25px;
+    width: auto;
+}
+
+    .category-insert__form .btn-secondary-custom:hover {
+        background: linear-gradient(to bottom, #FFC04D, #FF8000);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-insert__form .btn-secondary-custom:active {
+        transform: translateY(0);
+    }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .category-insert__card {
+        padding: 25px;
+    }
+
+    .category-insert__title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-insert__title {
+        font-size: 1.4rem;
+    }
+
+    .category-insert__submit-btn,
+    .category-insert__back-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}

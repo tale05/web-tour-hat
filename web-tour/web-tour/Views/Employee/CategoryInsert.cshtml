@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Thêm danh mục";
+}
+<link href="~/css/employee/categoryinsert.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="category-insert">
+    <div class="category-insert__card">
+        <div class="category-insert__header">
+            <h1 class="category-insert__title">Thêm danh mục mới</h1>
+            <div class="category-insert__underline"></div>
+        </div>
+
+        <form asp-action="AddCategory" asp-controller="Employee" method="post" enctype="multipart/form-data" class="category-insert__form">
+            <div class="category-insert__group">
+                <label for="NameCategory" class="category-insert__label">Tên danh mục</label>
+                <div class="category-insert__input-container">
+                    <input type="text" class="category-insert__input" id="NameCategory" name="NameCategory" required placeholder="Nhập tên danh mục" />
+                </div>
+            </div>
+
+            <div class="category-insert__group">
+                <label for="ImgCategory" class="category-insert__label">Ảnh danh mục</label>
+                <div class="category-insert__file-container">
+                    <input type="text"
+                           id="ImgCategory"
+                           name="ImgCategory"
+                           class="category-insert__input"
+                           required
+                           readonly="readonly" />
+                    <button type="button" onclick="openFileManager()">Click để mở form chọn ảnh</button>
+                    <img id="previewImage" src="" alt="Chưa có ảnh nào được chọn" style="max-width: 600px; height: auto; display: none; border: 1px solid #ccc; padding: 5px;" />
+                </div>
+            </div>
+
+            <div class="category-insert__actions">
+                <button type="submit" class="category-insert__submit-btn">
+                    <span class="category-insert__btn-icon">+</span>
+                    <span class="category-insert__btn-text">Thêm mới</span>
+                </button>
+
+                <a href="@Url.Action("CategoryManagement", "Employee")" class="btn btn-secondary-custom ms-2">
+                    <i class="fas fa-arrow-left"></i> Trở về
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("_NotificationPartial")
+<script src="~/js/notification.js"></script>
+@section Scripts {
+    <script>
+        function openFileManager() {
+            // Mở popup elFinder
+            var width = 900;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+
+            window.open(
+                '/FileManager/SelectImage',
+                'FileManager',
+                'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+            );
+        }
+
+        // Nhận đường dẫn từ elFinder và hiển thị ảnh
+        function SetImageUrl(url) {
+        // Nếu url bắt đầu bằng domain thì cắt chỉ lấy đường dẫn tương đối
+        try {
+                var relativeUrl = url;
+                // Nếu url là dạng tuyệt đối, ví dụ: https://localhost:7231/files/tourmiennam.jpg
+                var origin = window.location.origin;
+                if (url.startsWith(origin)) {
+                    relativeUrl = url.substring(origin.length);
+                }
+                document.getElementById('ImgCategory').value = relativeUrl;
+                const img = document.getElementById('previewImage');
+                img.src = relativeUrl;
+                img.style.display = "block";
+            } catch (e) {
+                document.getElementById('ImgCategory').value = url;
+                const img = document.getElementById('previewImage');
+                img.src = url;
+                img.style.display = "block";
+            }
+        }
+
+        window.SetImageUrl = SetImageUrl;
+
+        @if (ViewData["Error"] != null)
+        {
+            <text> showNotification('error', '@ViewData["Error"]'); </text>
+        }
+        else if (TempData["Success"] != null)
+        {
+            <text> showNotification('success', '@TempData["Success"]'); </text>
+        }
+    </script>
+}

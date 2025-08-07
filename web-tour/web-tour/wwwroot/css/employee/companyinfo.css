@@ -1,0 +1,332 @@
+﻿.container-company-info {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    margin-bottom: 30px;
+}
+
+    .container-company-info h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+
+        .container-company-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: #4285f4;
+            border-radius: 3px;
+        }
+
+    .container-company-info p {
+        color: #666;
+        margin-bottom: 24px;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .container-company-info table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        table-layout: fixed;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .container-company-info colgroup col:nth-child(1) {
+        width: 25%;
+    }
+
+    .container-company-info colgroup col:nth-child(2) {
+        width: 75%;
+    }
+
+    .container-company-info table th,
+    .container-company-info table td {
+        padding: 12px 16px;
+        vertical-align: middle;
+        border: none;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .container-company-info table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .container-company-info table tr:nth-child(even) {
+        background-color: rgba(66, 133, 244, 0.03);
+    }
+
+    .container-company-info table th {
+        background: linear-gradient(to bottom, #FFD8A6, #F7931E);
+        color: white;
+        text-align: left;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .container-company-info table td {
+        font-size: 15px;
+    }
+
+    /* Input styling */
+    .container-company-info input[type="text"],
+    .container-company-info input[type="email"],
+    .container-company-info input[type="date"],
+    .container-company-info textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+        background-color: #fff;
+        transition: all 0.2s ease;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+        /* Hover styling */
+        .container-company-info input[type="text"]:hover,
+        .container-company-info input[type="email"]:hover,
+        .container-company-info input[type="date"]:hover,
+        .container-company-info textarea:hover {
+            border-color: #F7931E;
+            box-shadow: 0 0 0 3px rgba(247, 147, 30, 0.3);
+            outline: none;
+        }
+
+        /* Focus styling */
+        .container-company-info input[type="text"]:focus,
+        .container-company-info input[type="email"]:focus,
+        .container-company-info input[type="date"]:focus,
+        .container-company-info textarea:focus {
+            border-color: #F7931E;
+            box-shadow: 0 0 0 3px rgba(247, 147, 30, 0.3);
+            outline: none;
+        }
+
+    /* Nút lưu */
+    .container-company-info button[type="submit"] {
+        padding: 12px 24px;
+        background: linear-gradient(to right, #F7931E, #FFD8A6);
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(66, 133, 244, 0.25);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+    }
+
+        .container-company-info button[type="submit"]:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(66, 133, 244, 0.3);
+        }
+
+        .container-company-info button[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(66, 133, 244, 0.2);
+        }
+
+    /* Card styling */
+    .container-company-info .card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+        background-color: white;
+    }
+
+    .container-company-info .card-header {
+        background-color: #f8f9fa;
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+        .container-company-info .card-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+    .container-company-info .card-body {
+        padding: 20px;
+    }
+
+    .container-company-info .table {
+        box-shadow: none;
+        margin-bottom: 0;
+        border: none;
+    }
+
+    /* File input styling */
+    .container-company-info input[type="file"] {
+        display: block;
+        width: 100%;
+        padding: 8px 0;
+        margin-top: 10px;
+        color: #555;
+    }
+
+    /* Read-only input styling */
+    .container-company-info .readonly-input {
+        background-color: #f8f9fa;
+        color: #666;
+    }
+
+/* Textarea styling */
+/*#input-Description__companyInfo {
+    height: 500px !important;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+}*/
+
+/* Image container styling */
+.container-company-info img {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    background: white;
+    max-height: 120px;
+    display: block;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* iframe styling */
+.container-company-info iframe {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .container-company-info {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+        .container-company-info table colgroup {
+            display: none;
+        }
+
+        .container-company-info table,
+        .container-company-info table tbody,
+        .container-company-info table tr,
+        .container-company-info table td {
+            display: block;
+            width: 100%;
+            content: "";
+        }
+
+            .container-company-info table th {
+                display: none;
+            }
+
+            .container-company-info table td {
+                position: relative;
+                padding-left: 40%;
+            }
+
+                .container-company-info table td:before {
+                    position: absolute;
+                    top: 12px;
+                    left: 12px;
+                    width: 35%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                    font-weight: 600;
+                    color: #333;
+                }
+
+            /* Chỉnh sửa bảng thứ 1 */
+            .container-company-info table tr:nth-of-type(1) td:nth-of-type(1):before {
+                content: "Id công ty:";
+            }
+
+            .container-company-info table tr:nth-of-type(2) td:nth-of-type(1):before {
+                content: "Tên công ty (VN):";
+            }
+
+            .container-company-info table tr:nth-of-type(3) td:nth-of-type(1):before {
+                content: "Tên công ty (EN):";
+            }
+
+            .container-company-info table tr:nth-of-type(4) td:nth-of-type(1):before {
+                content: "Tên viết tắt:";
+            }
+
+            .container-company-info table tr:nth-of-type(5) td:nth-of-type(1):before {
+                content: "Email công ty:";
+            }
+
+            .container-company-info table tr:nth-of-type(6) td:nth-of-type(1):before {
+                content: "Số điện thoại:";
+            }
+
+            .container-company-info table tr:nth-of-type(7) td:nth-of-type(1):before {
+                content: "Địa chỉ:";
+            }
+
+            .container-company-info table tr:nth-of-type(8) td:nth-of-type(1):before {
+                content: "Mô tả công ty:";
+            }
+
+            .container-company-info table tr:nth-of-type(9) td:nth-of-type(1):before {
+                content: "Số GPKD:";
+            }
+
+            .container-company-info table tr:nth-of-type(10) td:nth-of-type(1):before {
+                content: "Ngày cấp GPKD:";
+            }
+
+            .container-company-info table tr:nth-of-type(11) td:nth-of-type(1):before {
+                content: "Nơi cấp GPKD:";
+            }
+
+            .container-company-info table tr:nth-of-type(12) td:nth-of-type(1):before {
+                content: "Số GPLH-QT:";
+            }
+
+            .container-company-info table tr:nth-of-type(13) td:nth-of-type(1):before {
+                content: "Ngày cấp GPLHQT:";
+            }
+
+            .container-company-info table tr:nth-of-type(14) td:nth-of-type(1):before {
+                content: "Facebook:";
+            }
+
+        /* Chỉnh sửa bảng thứ 2 */
+        .container-company-info .card-body table tr:nth-of-type(1) td:nth-of-type(1):before {
+            content: "Ảnh/File:";
+        }
+
+        .container-company-info iframe {
+            width: 100%;
+            height: 200px;
+        }
+}
+

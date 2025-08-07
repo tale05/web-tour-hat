@@ -1,0 +1,106 @@
+﻿/* verify-style.css */
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container */
+.verify-container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+    /* Logo */
+    .verify-container .logo {
+        width: 300px;
+        height: auto;
+        margin: 0 auto 15px auto;
+        padding: 15px 0;
+        display: block;
+        object-fit: contain;
+    }
+
+/* Tiêu đề */
+h2 {
+    color: #343a40;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Ghi chú */
+.note {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Nút xác minh */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    .verify-container {
+        padding: 40px 25px;
+        max-width: 500px;
+        box-shadow: none;
+        border-radius: 0;
+        height: auto;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .note {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .btn-primary {
+        padding: 16px;
+        font-size: 1.3rem;
+        border-radius: 10px;
+    }
+
+    .verify-container .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+    }
+}

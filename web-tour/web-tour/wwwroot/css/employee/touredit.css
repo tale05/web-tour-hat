@@ -1,0 +1,120 @@
+﻿/* Container chính */
+.tour-update-container__TourEdit_cshtml {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 100%;
+    margin: 40px auto;
+    transition: all 0.4s ease;
+}
+
+/* Tiêu đề */
+.tour-update-title__TourEdit_cshtml {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Form Group */
+.form-group__TourEdit_cshtml {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+
+    /* Label */
+    .form-group__TourEdit_cshtml label {
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+/* Input và Select */
+.form-control__TourEdit_cshtml,
+.form-control-file__TourEdit_cshtml,
+.form-check-input__TourEdit_cshtml {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+    /* Hover hiệu ứng viền gradient */
+    .form-control__TourEdit_cshtml:hover,
+    .form-control-file__TourEdit_cshtml:hover,
+    .form-control__TourEdit_cshtml:focus,
+    .form-control-file__TourEdit_cshtml:focus {
+        outline: none;
+        border: 2px solid transparent;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(to bottom, #FFD8A6, #F7931E);
+        box-shadow: 0 0 8px rgba(247, 147, 30, 0.3);
+        transform: scale(1.01);
+    }
+
+/* Checkbox */
+.form-check-input__TourEdit_cshtml {
+    width: auto;
+    margin-right: 10px;
+}
+
+.form-check-label__TourEdit_cshtml {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Buttons */
+.btn-primary__TourEdit_cshtml,
+.btn-secondary {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary__TourEdit_cshtml {
+    background-color: #f7931e;
+    color: #fff;
+    border: none;
+}
+
+    .btn-primary__TourEdit_cshtml:hover {
+        background-color: #e67e00;
+        transform: translateY(-2px);
+    }
+
+.btn-secondary {
+    background-color: #bdc3c7;
+    color: #fff;
+    margin-left: 10px;
+    border: none;
+}
+
+    .btn-secondary:hover {
+        background-color: #95a5a6;
+        transform: translateY(-2px);
+    }
+
+/* Ảnh xem trước */
+img {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
+    img:hover {
+        transform: scale(1.03);
+    }

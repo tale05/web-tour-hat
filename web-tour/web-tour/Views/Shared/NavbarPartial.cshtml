@@ -1,0 +1,67 @@
+﻿@using web_tour.Helpers
+@model web_tour.Models.AllListViewModelsForIndexPage
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/homePartial/navbarpartial.css" />
+
+<nav class="hat-navbar">
+    <div class="hat-navbar-left">
+        @if (ViewBag.LogoFile != null)
+        {
+            <a href="@Url.Action("Index", "Home")">
+                <img src="@ViewBag.LogoFile" alt="Logo HAT" class="hat-logo" />
+            </a>
+        }
+    </div>
+
+    <!-- Hamburger Menu Button -->
+    <div class="hat-navbar-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+    </div>
+    <ul class="hat-navbar-menu" id="navbar-menu">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa-solid fa-house"></i>  TRANG CHỦ</a></li>
+        <li><a href="@Url.Action("Index","About")"><i class="fas fa-circle-info"></i>  GIỚI THIỆU</a></li>
+
+        <li class="dropdown-category-for-hat-navbar">
+            <a href="@Url.Action("Index","Tour")"><i class="fas fa-tags"></i>  TOUR DU LỊCH <i class="fa-solid fa-caret-down"></i></a>
+            <ul class="dropdown-menu-category-for-hat-navbar">
+                @if (Model?.ListNameAndImageCategoriesForNavbar != null && Model.ListNameAndImageCategoriesForNavbar.Any())
+                {
+                    foreach (var item in Model.ListNameAndImageCategoriesForNavbar)
+                    {
+                        if (item?.IdCategory != null && item?.NameCategory != null)
+                        {
+                            <li>
+                                <a href="@Url.Action("GetListTourByCategory", "Tour", new { slug = SlugHelper.GenerateSlug(item.NameCategory) })">
+                                    @item.NameCategory
+                                </a>
+                            </li>
+                        }
+                    }
+                }
+                else
+                {
+                    <li>Không có danh mục nào.</li>
+                }
+            </ul>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","News")">
+                <i class="fas fa-newspaper"></i>  BÀI VIẾT
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Feedback")">
+                <i class="fas fa-camera"></i>  ẢNH FEEBACK
+            </a>
+        </li>
+        <li class="dropdown-search-for-hat-navbar">
+            <a href="javascript:void(0);">
+                <i class="fa-solid fa-magnifying-glass"></i> TÌM KIẾM
+            </a>
+            <form class="dropdown-input-for-search-input" method="get" action="@Url.Action("GetTourByKeyword", "Tour")">
+                <input type="text" name="keyword" placeholder="Tìm kiếm tour..." />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,145 @@
+﻿@model web_tour.Models.NewsModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Thêm bài báo mới";
+}
+<link href="~/css/employee/employeeinsert.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="employee-insert">
+    <div class="employee-insert__card">
+        <div class="employee-insert__header">
+            <h1 class="employee-insert__title">Thêm bài viết mới</h1>
+            <div class="employee-insert__underline"></div>
+        </div>
+
+        <form asp-action="NewsInsert" asp-controller="Employee" method="post" enctype="multipart/form-data" class="employee-insert__form">
+            <div class="employee-insert__group">
+                <label for="Title" class="employee-insert__label">Tiêu đề</label>
+                <div class="employee-insert__input-container">
+                    <input asp-for="Title" type="text" class="employee-insert__input" required placeholder="Nhập tiêu đề" />
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="Content" class="employee-insert__label">Nội dung</label>
+                <div class="employee-insert__input-container">
+                    <textarea asp-for="Content"
+                              id="input-Content__tourDetailManager"
+                              class="employee-insert__input"
+                              style="width: 100%; height: 600px; border: 1px solid #000;">Chưa có thông tin</textarea>
+                </div>
+            </div>
+            <div class="employee-insert__group">
+                <label for="ImgNews" class="employee-insert__label">Ảnh tiêu đề</label>
+                <div class="employee-insert__input-container">
+                    <input type="text"
+                           id="ImgNews"
+                           name="ImgNews"
+                           class="employee-insert__input"
+                           readonly="readonly"
+                           required />
+                    <button type="button" onclick="openFileManager()" class="employee-insert__btn-file-manager">Chọn ảnh (elFinder)</button>
+                    <img id="previewImage"
+                         src=""
+                         alt="Chưa có ảnh nào được chọn"
+                         style="max-width: 600px; height: auto; display: none; border: 1px solid #ccc; padding: 5px;" />
+                </div>
+            </div>
+
+            <div class="employee-insert__actions">
+                <button type="submit" class="employee-insert__submit-btn">
+                    <span class="employee-insert__btn-icon">+</span>
+                    <span class="employee-insert__btn-text">Thêm mới</span>
+                </button>
+
+                <a href="@Url.Action("NewsManager", "Employee")" class="btn btn-secondary-custom ms-2">
+                    <i class="fas fa-arrow-left"></i> Trở về
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+@await Html.PartialAsync("_NotificationPartial")
+<script src="https://cdn.tiny.cloud/1/iz8q6xcbgibchqldkhb6kbg9syrm3vb1q77ts1c280qm9p6m/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="~/js/notification.js"></script>
+<script>
+
+    @if (ViewData["Error"] != null)
+    {
+        <text> showNotification('error', '@ViewData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+
+    // Khởi tạo TinyMCE cho textarea
+        tinymce.init({
+        selector: '#input-Content__tourDetailManager',
+        plugins: [
+            'paste',
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons',
+            'image', 'link', 'lists', 'media', 'searchreplace',
+            'table', 'visualblocks', 'wordcount'],
+        toolbar: 'openelfinder | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        setup: function (editor) {
+            editor.ui.registry.addButton('openelfinder', {
+                text: 'Chọn ảnh (elFinder)',
+                icon: 'browse',
+                onAction: function () {
+                    var fileManagerURL = '@Url.Action("SelectImage", "FileManager")';
+                    var w = 900;
+                    var h = 600;
+                    var x = window.screenX + (window.outerWidth - w) / 2;
+                    var y = window.screenY + (window.outerHeight - h) / 2;
+                    window.SetImageUrl = function (url) {
+                        editor.insertContent('<img src="' + url + '" />');
+                    };
+                    window.open(
+                        fileManagerURL,
+                        'elFinder',
+                        'width=' + w + ',height=' + h + ',left=' + x + ',top=' + y + ',resizable=yes'
+                    );
+                }
+            });
+        },
+        paste_as_text: false,
+        paste_data_images: true,
+        content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
+    });
+
+    function openFileManager() {
+        // Mở popup elFinder
+        var width = 900;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+
+        window.open(
+            '/FileManager/SelectImage',
+            'FileManager',
+            'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+        );
+    }
+
+    // Nhận đường dẫn từ elFinder và hiển thị ảnh
+    function SetImageUrl(url) {
+        try {
+            var relativeUrl = url;
+            var origin = window.location.origin;
+            if (url.startsWith(origin)) {
+                relativeUrl = url.substring(origin.length);
+            }
+            document.getElementById('ImgNews').value = relativeUrl;
+            const img = document.getElementById('previewImage');
+            img.src = relativeUrl;
+            img.style.display = "block";
+        } catch (e) {
+            document.getElementById('ImgNews').value = url;
+            const img = document.getElementById('previewImage');
+            img.src = url;
+            img.style.display = "block";
+        }
+    }
+    window.SetImageUrl = SetImageUrl;
+</script>

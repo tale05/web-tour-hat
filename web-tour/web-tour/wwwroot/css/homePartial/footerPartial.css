@@ -1,0 +1,166 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:opsz,wght@8..144,100..900&display=swap');
+
+.footer {
+    background: #FF7F24;
+    color: white;
+    padding: 20px 0 10px 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    .footer h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    .footer p,
+    .footer li,
+    .footer span {
+        color: white;
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer a {
+        color: white;
+    }
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.embed-map {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.embed-map-frame {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+}
+
+.social-icons-for_Footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+}
+
+    .social-icons-for_Footer a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        transition: transform 0.2s ease;
+    }
+
+        .social-icons-for_Footer a:hover {
+            transform: scale(1.4);
+        }
+
+/* Fanpage */
+.fanpage-box {
+    width: 300px;
+}
+
+/* Bottom section */
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.company-info p {
+    margin: 2px 0;
+}
+
+.certificates {
+    display: flex;
+    /*flex-wrap: wrap;*/ /* Để ảnh tự xuống dòng khi thiếu chỗ */
+    gap: 10px; /* Khoảng cách giữa ảnh */
+}
+
+    .certificates img {
+        max-width: auto;
+        max-height: 265px;
+    }
+
+
+@media only screen and (max-width: 767px) {
+    .footer {
+        padding: 20px;
+    }
+
+        .footer h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+    .footer-top {
+        display: block; /* Từng hàng */
+    }
+
+    .footer-col {
+        margin-bottom: 45px;
+    }
+
+    .embed-map {
+        max-width: 100%;
+        height: 200px;
+    }
+
+    .fanpage-box {
+        height: auto;
+        max-height: none;
+        width: 100%;
+    }
+
+        .fanpage-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    .subscribe-form {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+        .subscribe-form input {
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+
+        .subscribe-form button {
+            border-radius: 5px;
+            width: 100%;
+        }
+
+    .stats li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-bottom {
+        display: block; /* Từng hàng */
+        margin-top: 30px;
+    }
+
+    .certificates img {
+        width: 100%;
+        max-width: 150px;
+        margin-bottom: 8px;
+    }
+}

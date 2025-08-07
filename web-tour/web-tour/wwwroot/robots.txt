@@ -1,0 +1,6 @@
+﻿User-agent: *
+Disallow: /admin/
+Disallow: /identity/
+Disallow: /Account/
+
+Sitemap: https://dulichhat.com/sitemap.xml

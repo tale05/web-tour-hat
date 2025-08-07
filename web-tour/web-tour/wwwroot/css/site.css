@@ -1,0 +1,81 @@
+﻿* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+/* Phần chứa header và slider, được đẩy xuống dưới navbar */
+.header-area {
+    margin-top: 100px; /* tương ứng chiều cao của navbar */
+}
+
+/* Slider dính khi scroll */
+.slider-sticky {
+    position: sticky;
+    top: 100px; /* nằm dưới navbar */
+    z-index: 999;
+    background-color: #fff;
+}
+
+/* Main content */
+.container {
+    max-width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Main height (chỉ để test scroll) */
+main {
+    min-height: auto;
+    width: 100%;
+}
+
+/* Footer */
+footer.footer {
+    background-color: #f57c00;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: left;
+    margin-top: auto;
+    z-index: 1;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .header-area {
+        height: auto !important;
+    }
+}

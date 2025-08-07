@@ -1,0 +1,26 @@
+﻿.top-bar {
+    background: #FF7F24;
+    place-items: center;
+    display: grid;
+    height: 45px;
+}
+
+.top-bar-content {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.icon-btn {
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}

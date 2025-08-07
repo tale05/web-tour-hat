@@ -1,0 +1,69 @@
+## Build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## VS Code settings
+.vscode/
+
+## Rider settings
+.idea/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## DNX
+project.lock.json
+artifacts/
+
+## ASP.NET Core
+project.fragment.lock.json
+**/wwwroot/lib/
+
+## DotCover
+*.dotCover
+
+## Logs and database
+*.log
+*.sql
+*.sqlite
+*.db
+*.mdf
+*.ldf
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Packages
+*.nupkg
+packages/
+*.snupkg
+
+## Backup & publish
+*.bak
+*.publish.xml
+*.PublishProfiles/
+
+## Environment & config
+**/appsettings.json
+secrets.json
+
+## Others
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## If using ReSharper or Rider
+_ReSharper*/
+*.DotSettings.user
+
+## Visual Studio
+*.vs/

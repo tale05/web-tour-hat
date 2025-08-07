@@ -1,0 +1,69 @@
+﻿@model web_tour.Models.ClientInfoViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Thông tin trình duyệt</title>
+    <link rel="icon" type="image/png" href="~/images/icon_head.png" />
+    <link href="~/css/clientinfo/index.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="ip-lookup-container">
+        <div class="ip-lookup-header">
+            <h1 class="header-title">Additional Information</h1>
+            <p class="header-subtitle">Thông tin chi tiết về thiết bị và trình duyệt</p>
+        </div>
+
+        <div class="ip-lookup-content">
+            <div class="current-ip-section">
+                <div class="current-ip-label">Địa chỉ IP của bạn là</div>
+                <div class="ip-address-display">
+                    <div id="ipAddress" class="ip-address">@Model.IP</div>
+                    <button class="copy-button" onclick="copyIp()" title="Sao chép IP" style="cursor:pointer; background:none; border:none;">
+                        <i class="fa-solid fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="additional-info-section">
+                <div class="info-grid" id="infoArea">
+                    <div class="info-row">
+                        <div class="info-label">Browser</div>
+                        <div class="info-value">@Model.Browser</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Operating System</div>
+                        <div class="info-value">@Model.OS</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">User Agent</div>
+                        <div class="info-value">@Model.UserAgent</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Date & Time</div>
+                        <div class="info-value">@Model.DateTimeNow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ by H.A.T - <a href="/">Trang chủ</a>
+        </div>
+    </div>
+
+    <script>
+        function copyIp() {
+            const ip = document.getElementById("ipAddress").innerText;
+            navigator.clipboard.writeText(ip).then(() => {
+                alert("Đã sao chép IP: " + ip);
+            });
+        }
+    </script>
+</body>
+</html>

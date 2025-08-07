@@ -1,0 +1,155 @@
+﻿/* Container chính của nội dung */
+.content-detail-news-for__NewsDetail {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+}
+
+    /* Heading chung */
+    .content-detail-news-for__NewsDetail h1,
+    .content-detail-news-for__NewsDetail h2,
+    .content-detail-news-for__NewsDetail h3,
+    .content-detail-news-for__NewsDetail h4,
+    .content-detail-news-for__NewsDetail h5,
+    .content-detail-news-for__NewsDetail h6 {
+        color: #f57c00;
+        position: relative;
+        padding-left: 16px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+        /* Thanh dọc mở rộng khi hover */
+        .content-detail-news-for__NewsDetail h1::before,
+        .content-detail-news-for__NewsDetail h2::before,
+        .content-detail-news-for__NewsDetail h3::before,
+        .content-detail-news-for__NewsDetail h4::before,
+        .content-detail-news-for__NewsDetail h5::before,
+        .content-detail-news-for__NewsDetail h6::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: #f57c00;
+            border-radius: 4px;
+            z-index: -1;
+            transition: width 0.7s ease;
+        }
+
+    /* Đoạn văn bản */
+    .content-detail-news-for__NewsDetail p {
+        margin-bottom: 16px;
+        color: #444;
+        transition: color 0.3s ease;
+    }
+
+    /* Danh sách */
+    .content-detail-news-for__NewsDetail ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .content-detail-news-for__NewsDetail li {
+        margin-bottom: 10px;
+        list-style: disc;
+        transition: transform 0.3s ease;
+    }
+
+        .content-detail-news-for__NewsDetail li:hover {
+            transform: translateX(5px);
+        }
+
+    /* Hình ảnh */
+    .content-detail-news-for__NewsDetail img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        margin: 20px 0;
+        object-fit: contain;
+    }
+
+        .content-detail-news-for__NewsDetail img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+    /* Link */
+    .content-detail-news-for__NewsDetail a {
+        color: #0b5394;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+        .content-detail-news-for__NewsDetail a:hover {
+            color: #063970;
+            text-decoration: underline;
+        }
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 576px) {
+    .content-detail-news-for__NewsDetail {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+        .content-detail-news-for__NewsDetail h1,
+        .content-detail-news-for__NewsDetail h2,
+        .content-detail-news-for__NewsDetail h3,
+        .content-detail-news-for__NewsDetail h4,
+        .content-detail-news-for__NewsDetail h5,
+        .content-detail-news-for__NewsDetail h6 {
+            font-size: 1.1rem;
+            padding-left: 12px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+            .content-detail-news-for__NewsDetail h1::before,
+            .content-detail-news-for__NewsDetail h2::before,
+            .content-detail-news-for__NewsDetail h3::before,
+            .content-detail-news-for__NewsDetail h4::before,
+            .content-detail-news-for__NewsDetail h5::before,
+            .content-detail-news-for__NewsDetail h6::before {
+                width: 4px;
+                top: 3px;
+                border-radius: 2px;
+            }
+
+        .content-detail-news-for__NewsDetail p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .content-detail-news-for__NewsDetail ul {
+            padding-left: 18px;
+            margin-bottom: 16px;
+        }
+
+        .content-detail-news-for__NewsDetail li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .content-detail-news-for__NewsDetail img {
+            margin: 16px 0;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-detail-news-for__NewsDetail a {
+            font-size: 0.95rem;
+        }
+}

@@ -1,0 +1,97 @@
+﻿.tour-insert-container__TourManagement_cshtml {
+    max-width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.tour-insert-title__TourManagement_cshtml {
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group__TourManagement_cshtml {
+    margin-bottom: 20px;
+}
+
+    .form-group__TourManagement_cshtml label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #444;
+    }
+
+.form-control__TourManagement_cshtml,
+.form-control,
+.form-control-file {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-control-file {
+    cursor: not-allowed;
+}
+
+    .form-control__TourManagement_cshtml:focus,
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+}
+
+.form-check-label {
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-primary__TourManagement_cshtml {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+}
+
+    .btn-primary__TourManagement_cshtml:hover {
+        background-color: #0056b3;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }

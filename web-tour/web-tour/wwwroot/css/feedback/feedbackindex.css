@@ -1,0 +1,126 @@
+﻿.feedback-section {
+    background: white;
+    padding: 40px 0 60px 0;
+    min-height: 100vh;
+}
+
+.feedback-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #2c3e50;
+    letter-spacing: 2px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.image-item {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.08), 0 1.5px 4px rgba(44,62,80,0.03);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4/3;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    transition: box-shadow 0.25s;
+}
+
+    .image-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .image-item:hover img {
+        transform: scale(1.06);
+    }
+
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.87);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+#lightbox img {
+    max-width: 92vw;
+    max-height: 80vh;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.16);
+    margin-bottom: 10px;
+}
+
+.lightbox-controls {
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 3rem;
+    pointer-events: none;
+    z-index: 10001;
+    user-select: none;
+}
+
+    .lightbox-controls i {
+        pointer-events: auto;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+        cursor: pointer;
+        padding: 0 38px;
+    }
+
+        .lightbox-controls i:hover {
+            opacity: 1;
+            color: #f1c40f;
+        }
+
+@media (max-width: 900px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback-title {
+        font-size: 1.6rem;
+    }
+}

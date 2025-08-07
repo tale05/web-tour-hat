@@ -1,0 +1,187 @@
+﻿@using web_tour.Helpers
+@inject web_tour.Helpers.HashIdHelper HashId
+@model web_tour.Models.AllListViewModelsForIndexPage
+@{
+    ViewBag.Title = "Trang chủ";
+}
+@section Styles {
+    <link href="~/css/security-block.css" rel="stylesheet" />
+    <link href="~/css/home/index.css" rel="stylesheet" />
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="page-main-for-index__HomeIndex">
+    <div class="header-section__HomeIndex">
+        <h1>
+            HÀNH TRÌNH KHÁM PHÁ VIỆT NAM
+        </h1>
+        <p>
+            Chúng tôi mang đến những tour du lịch chất lượng, kết nối bạn với vẻ đẹp thiên nhiên, văn hóa và con người khắp ba miền đất nước. Trải nghiệm từng vùng đất theo cách trọn vẹn và đáng nhớ nhất!
+        </p>
+    </div>
+    <div class="cards-container__HomeIndex">
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-globe-asia"></i>
+            </div>
+            <h2>Khám Phá Việt Nam</h2>
+            <p>Chúng tôi mang đến những hành trình khám phá đa dạng từ núi rừng Tây Bắc đến biển xanh miền Trung – mỗi tour là một trải nghiệm độc đáo và đáng nhớ.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-heart"></i>
+            </div>
+            <h2>Phục Vụ Tận Tâm</h2>
+            <p>Phương châm “Hạnh phúc trên mỗi hành trình” – chúng tôi luôn đặt sự hài lòng và trải nghiệm của khách hàng lên hàng đầu trong từng hành trình.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-route"></i>
+            </div>
+            <h2>Hành Trình Linh Hoạt</h2>
+            <p>Tour thiết kế linh hoạt, phù hợp mọi nhu cầu – từ khám phá văn hóa, nghỉ dưỡng cho đến du lịch gia đình, nhóm bạn hay công ty.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-star"></i>
+            </div>
+            <h2>Chất Lượng Hàng Đầu</h2>
+            <p>Hợp tác với các đối tác uy tín, hệ thống khách sạn, phương tiện và hướng dẫn viên chuyên nghiệp giúp chuyến đi của bạn luôn suôn sẻ.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-dollar-sign"></i>
+            </div>
+            <h2>Giá Cả Hợp Lý</h2>
+            <p>Chúng tôi luôn tối ưu chi phí để mang lại mức giá cạnh tranh nhất mà vẫn đảm bảo chất lượng dịch vụ tốt nhất cho bạn.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-shield-alt"></i>
+            </div>
+            <h2>An Toàn Ưu Tiên</h2>
+            <p>Luôn cập nhật các biện pháp an toàn và hỗ trợ khách hàng 24/7 để đảm bảo bạn yên tâm tận hưởng chuyến đi của mình.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-users"></i>
+            </div>
+            <h2>Đồng Hành Cùng Bạn</h2>
+            <p>Đội ngũ tư vấn viên và hướng dẫn viên luôn sẵn sàng hỗ trợ, lắng nghe và đồng hành cùng bạn trong mọi chặng đường.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-headset"></i>
+            </div>
+            <h2>Hỗ Trợ Khách Hàng</h2>
+            <p>Đội ngũ tư vấn luôn sẵn sàng hỗ trợ bạn 24/7 để giải đáp mọi thắc mắc và đồng hành cùng chuyến đi của bạn.</p>
+        </div>
+        <div class="card__HomeIndex">
+            <div class="icon__HomeIndex">
+                <i class="fa fa-handshake"></i>
+            </div>
+            <h2>Cam Kết Uy Tín</h2>
+            <p>Chúng tôi cam kết cung cấp thông tin minh bạch, dịch vụ đúng như mô tả và hoàn tiền nếu không đúng cam kết.</p>
+        </div>
+    </div>
+
+    <div class="application-section__HomeIndex">
+        @foreach (var item in Model.ListNameAndImageCategories)
+        {
+            <a href="@Url.Action("GetListTourByCategory", "Tour", new { slug = SlugHelper.GenerateSlug(item.NameCategory) })">
+                <div class="application-card__HomeIndex">
+                    <img src="@item.ImgCategory" alt="Image Category" />
+                    <div class="overlay__HomeIndex">
+                        <h2>@item.NameCategory</h2>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+    <div class="container-tours__HomeIndex">
+        <h1 class="section-title__HomeIndex">TOUR DU LỊCH NỔI BẬT</h1>
+        @foreach (var item in Model.ListTourForIndex)
+        {
+            <div class="tour-card__HomeIndex">
+                @{
+                    var slug = SlugHelper.GenerateSlug(item.NameTour);
+                }
+                <a href="@Url.Action("TourDetail", "Tour", new { slug = slug })" class="tour-card-link">
+                    <div class="tour-card-image__HomeIndex">
+                        <img src="@item.ImgTour" alt="@item.NameTour" />
+                        <div class="tour-card-overlay__HomeIndex">
+                            <span class="view-details__HomeIndex">Xem Chi Tiết</span>
+                        </div>
+                    </div>
+                    <div class="tour-card-content__HomeIndex">
+                        <h3 class="tour-title__HomeIndex">
+                            <i class="fa-solid fa-location-dot"></i> @item.NameTour
+                        </h3>
+                        <p class="tour-price__HomeIndex">
+                            <span class="price-before__HomeIndex">Giá gốc: @item.PriceBefore</span>
+                            <span class="price-after__HomeIndex">
+                                <i class="fa-solid fa-tag"></i> @item.PriceAfter
+                            </span>
+                        </p>
+                        <p style="font-style: italic; color: #666; font-size: 12px; letter-spacing: 0.5px; font-weight: 500; margin: 0 0 10px 0; text-align: center;">
+                            © Bản quyền thuộc về Công ty Du lịch H.A.T
+                        </p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="container-for-load-more__HomeIndex">
+        <a class="load-more__HomeIndex" href="@Url.Action("Index","Tour")">
+            Xem Tất Cả Tour
+        </a>
+    </div>
+
+    @* News *@
+    <div class="container-for__NewsIndex">
+        @if (!Model.ListNewsForIndex.Any())
+        {
+            <h3 style="color:orangered; font-weight:bold">Chưa có bài viết nào</h3>
+        }
+        else
+        {
+            <div class="header-title-for__NewsIndex">
+                <h2>CÁC BÀI VIẾT NỔI BẬT</h2>
+            </div>
+            <div class="main-content-for__NewsIndex">
+                @foreach (var item in Model.ListNewsForIndex)
+                {
+                    var encodedId = HashId.EncodeId(item.IdNews ?? 0);
+                    <a href="@Url.Action("NewsDetail", "News", new { encodedId })" class="tour-card-link">
+                        <div class="news-card-for__NewsIndex">
+                            @if (item.ImgNews != null)
+                            {
+                                <img src="@Url.Content(item.ImgNews)" alt="News Image" class="news-image-for__NewsIndex" />
+                            }
+                            else
+                            {
+                                <img src="~/images/empty.png" alt="News Image" class="news-image-for__NewsIndex" />
+                            }
+                            <h3 class="news-title-for__NewsIndex">
+                                @item.Title
+                            </h3>
+                            <h4 class="news-idcompany-for__NewsIndex">
+                                @item.Company
+                            </h4>
+                            <h5 class="news-createdtime-for__NewsIndex">
+                                @item.CreatedTime
+                            </h5>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+    </div>
+    <div class="container-for-load-more__HomeIndex">
+        <a class="load-more__HomeIndex" href="@Url.Action("Index","News")">
+            Xem Tất Cả Bài Viết
+        </a>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/security-block.obfuscated.js"></script>
+}

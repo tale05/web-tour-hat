@@ -1,0 +1,792 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Pinyon+Script&display=swap');
+
+.page-main-for-index__HomeIndex {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #333;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+/* Header Section */
+.header-section__HomeIndex {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+    .header-section__HomeIndex h1 {
+        font-size: 26px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 16px;
+    }
+
+        /* Cho h1 trong header */
+        .header-section__HomeIndex h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            margin: 8px auto 0 auto;
+            background: linear-gradient(90deg, #FF7E5F, #FEB47B);
+            border-radius: 2px;
+            animation: gradient 3s linear infinite;
+        }
+
+    .header-section__HomeIndex p {
+        font-size: 16px;
+        max-width: 800px;
+        margin: 0 auto;
+        color: #666;
+    }
+
+/* Cards Container */
+.cards-container__HomeIndex {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.card__HomeIndex {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px 25px;
+    width: calc(33.333% - 30px);
+    min-width: 280px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card__HomeIndex:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+.icon__HomeIndex {
+    background-color: #f5f5f5;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .icon__HomeIndex i {
+        font-size: 20px;
+        color: #555;
+    }
+
+.card__HomeIndex h2 {
+    font-size: 18px;
+    margin: 0 0 12px 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.card__HomeIndex p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    text-align: left;
+}
+
+/* Application Section */
+.application-section__HomeIndex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.application-card__HomeIndex {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+    .application-card__HomeIndex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .application-card__HomeIndex:hover img {
+        transform: scale(1.2);
+    }
+
+.overlay__HomeIndex {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+    .overlay__HomeIndex h2 {
+        font-family: "Pinyon Script", cursive;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 30px;
+        color: #fff;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .overlay__HomeIndex p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+/* Container chính */
+.container-tours__HomeIndex {
+    background-color: rgba(255, 255, 255, 0.7);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 30px;
+    max-width: 1390px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .container-tours__HomeIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF7E5F, #FEB47B, #FF7E5F);
+        background-size: 200% auto;
+        animation: gradient 3s linear infinite;
+        border-radius: 10px;
+    }
+
+.section-title__HomeIndex {
+    grid-column: 1 / -1;
+    font-size: 26px;
+    text-align: center;
+    color: #333;
+    position: relative;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+    /* Cho tiêu đề section tour */
+    .section-title__HomeIndex::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #FF7E5F, #FEB47B);
+        border-radius: 2px;
+        animation: gradient 3s linear infinite;
+    }
+
+.tour-card__HomeIndex {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 10px 0;
+}
+
+    .tour-card__HomeIndex:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+.tour-card-image__HomeIndex {
+    position: relative;
+    overflow: hidden;
+}
+
+    .tour-card-image__HomeIndex img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+.tour-card__HomeIndex:hover .tour-card-image__HomeIndex img {
+    transform: scale(1.1);
+}
+
+.tour-card-overlay__HomeIndex {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.tour-card__HomeIndex:hover .tour-card-overlay__HomeIndex {
+    opacity: 1;
+}
+
+.view-details__HomeIndex {
+    background-color: #fff !important;
+    color: #333 !important;
+    font-weight: 600 !important;
+    border-radius: 30px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    border: none !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tour-card__HomeIndex:hover .view-details__HomeIndex {
+    transform: translateY(0);
+}
+
+.view-details__HomeIndex:hover {
+    background-color: #f8f9fa !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.tour-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 1rem;
+    color: #fff;
+    font-size: 0.875rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.tour-card__HomeIndex:hover .tour-meta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tour-duration, .tour-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.duration-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+.star-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD700' stroke='%23FFD700' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+.tour-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.tour-card__HomeIndex:hover .tour-badge {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.tour-card-content__HomeIndex {
+    padding: 0.3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.tour-title__HomeIndex {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    height: 2.8em;
+}
+
+.tour-price__HomeIndex {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-before__HomeIndex {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.price-after__HomeIndex {
+    color: #f57c00;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.container-for-load-more__HomeIndex {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.load-more__HomeIndex {
+    width: 400px;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #FF7F24;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+    .load-more__HomeIndex:hover {
+        background-color: #e0661a;
+        transform: translateY(-6px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    }
+
+/* Design View News */
+/* News Index Page Styling */
+
+.container-for__NewsIndex {
+    max-width: 1390px;
+    margin: 3rem auto;
+    padding: 40px 30px;
+    background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .container-for__NewsIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF7E5F, #FEB47B, #FF7E5F);
+        background-size: 200% auto;
+        animation: gradient 3s linear infinite;
+    }
+
+.header-title-for__NewsIndex {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+    .header-title-for__NewsIndex h2 {
+        font-size: 27px;
+        color: #2d3748;
+        font-weight: 550;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.8rem;
+    }
+
+        /* Cho tiêu đề tin tức */
+        .header-title-for__NewsIndex h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF7E5F, #FEB47B);
+            border-radius: 2px;
+            animation: gradient 3s linear infinite;
+        }
+
+    .header-title-for__NewsIndex:hover h2::after {
+        width: 120px;
+    }
+
+.main-content-for__NewsIndex {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem 1rem;
+}
+
+.news-card-for__NewsIndex {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 10px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    transform: translateZ(0);
+    position: relative;
+}
+
+    .news-card-for__NewsIndex:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12), 0 10px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .news-card-for__NewsIndex::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: 12px;
+    }
+
+    .news-card-for__NewsIndex:hover::before {
+        opacity: 1;
+    }
+
+.news-image-for__NewsIndex {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card-for__NewsIndex:hover .news-image-for__NewsIndex {
+    transform: scale(1.05);
+}
+
+.news-title-for__NewsIndex {
+    /* Kiểu chữ & bố cục gốc */
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    padding: 1.2rem 1.5rem 0.8rem;
+    margin: 0;
+    /* ---- Giới hạn 2 dòng ---- */
+    line-height: 1.4em; /* 1 dòng cao 1.4em */
+    max-height: 4em; /* khóa cao đúng 2 dòng */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* CHỈ 2 dòng */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-card-for__NewsIndex:hover .news-title-for__NewsIndex::after {
+    width: 60px;
+    background: #FF7E5F;
+}
+
+.news-idcompany-for__NewsIndex {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #718096;
+    padding: 0.8rem 1.5rem 0.4rem;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.news-createdtime-for__NewsIndex {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #a0aec0;
+    padding: 0.4rem 1.5rem 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+    .news-createdtime-for__NewsIndex::before {
+        content: "🕒";
+        margin-right: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+.news-card-for__NewsIndex:hover .news-title-for__NewsIndex {
+    color: #FF7E5F;
+}
+
+.news-card-for__NewsIndex:hover .news-idcompany-for__NewsIndex {
+    color: #4a5568;
+}
+
+/* Animation keyframes */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in animation to news cards */
+.news-card-for__NewsIndex {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+    .news-card-for__NewsIndex:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .news-card-for__NewsIndex:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .cards-container__HomeIndex {
+        gap: 20px;
+    }
+
+    .card__HomeIndex {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .application-section__HomeIndex {
+        grid-template-columns: 1fr;
+    }
+
+    .header-section__HomeIndex {
+        margin-bottom: 30px;
+    }
+
+        .header-section__HomeIndex h1 {
+            font-size: 20px;
+        }
+
+        .header-section__HomeIndex p {
+            font-size: 14px;
+        }
+
+    .section-title__HomeIndex {
+        font-size: 24px;
+        margin-bottom: 2rem;
+    }
+
+    .tour-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .view-details__HomeIndex {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tour-meta {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tour-badge {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Container Tour (Tour Card) */
+
+    .container-tours__HomeIndex {
+        grid-template-columns: 1fr; /* Hiển thị 1 thẻ trên 1 dòng */
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .tour-card__HomeIndex {
+        margin: 0 auto;
+        width: 100%; /* Cho thẻ chiếm toàn bộ chiều rộng container */
+        border-radius: 12px;
+    }
+
+    .tour-card-image__HomeIndex img {
+        height: 180px; /* Giảm chiều cao ảnh để vừa với màn nhỏ */
+    }
+
+    .tour-card-content__HomeIndex {
+        padding: 0.5rem 1rem;
+    }
+
+    .tour-title__HomeIndex {
+        font-size: 1.1rem;
+        -webkit-line-clamp: 2;
+        height: 2.6em;
+    }
+
+    .tour-price__HomeIndex {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .price-before__HomeIndex {
+        font-size: 0.85rem;
+        margin-bottom: 0;
+    }
+
+    .price-after__HomeIndex {
+        font-size: 1.1rem;
+    }
+
+    .load-more__HomeIndex {
+        width: 100%;
+        margin: 20px 0;
+        font-size: 1rem;
+    }
+
+    /* Design View News */
+    /* News Index Page Styling */
+    .container-for__NewsIndex {
+        padding: 20px;
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .header-title-for__NewsIndex h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-content-for__NewsIndex {
+        grid-template-columns: 1fr;
+        gap: 1.5rem 0;
+    }
+	
+	.news-card-for__NewsIndex {
+		border-radius: 12px;
+	}
+
+    .news-title-for__NewsIndex {
+        font-size: 1.1rem;
+        padding: 1rem 1.2rem 0.6rem;
+		max-height: 3.5em;
+    }
+
+    .news-idcompany-for__NewsIndex {
+        padding: 0.6rem 1.2rem 0.3rem;
+    }
+
+    .news-createdtime-for__NewsIndex {
+        padding: 0.3rem 1.2rem 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card__HomeIndex {
+        width: 100%;
+    }
+
+    .application-card__HomeIndex {
+        height: 220px;
+    }
+}

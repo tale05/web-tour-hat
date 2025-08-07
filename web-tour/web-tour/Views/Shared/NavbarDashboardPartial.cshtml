@@ -1,0 +1,71 @@
+﻿@{
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+<link rel="stylesheet" href="~/css/employee/navbardashboardpartial.css" />
+<div class="container-navbar-dashboard">
+    <nav class="navbar-dashboard">
+        <div class="logo">
+            <a href="@Url.Action("Dashboard", "Employee")">
+                <img src="@ViewBag.CompanyIcon" alt="HAT Logo" "   />
+            </a>
+        </div>
+
+        <ul class="menu">
+                @* <li class="@(currentAction == "Dashboard" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("Dashboard", "Employee")">
+                    <i class="fas fa-home"></i>
+                    Trang chủ
+                </a>
+            </li> *@
+
+            <li class="@(currentAction == "CompanyInfo" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("CompanyInfo", "Employee")">
+                    <i class="fas fa-globe"></i>
+                    Thông tin công ty
+                </a>
+            </li>
+
+            <li class="@(currentAction == "CategoryManagement" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("CategoryManagement", "Employee")">
+                    <i class="fas fa-server"></i>
+                    Quản lý danh mục
+                </a>
+            </li>
+
+            <li class="@(currentAction == "TourManagement" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("TourManagement", "Employee")">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Danh sách tour du lịch
+                </a>
+            </li>
+
+            <li class="@(currentAction == "EmployeeManager" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("EmployeeManager", "Employee")">
+                    <i class="fas fa-users"></i>
+                    Danh sách tài khoản
+                </a>
+            </li>
+
+            <li class="@(currentAction == "NewsManager" && currentController == "Employee" ? "active" : "")">
+                <a href="@Url.Action("NewsManager", "Employee")">
+                    <i class="fas fa-newspaper"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+
+            <li class="@(currentAction == "Index" && currentController == "FileManager" ? "active" : "")">
+                <a href="@Url.Action("Index", "FileManager")">
+                    <i class="fas fa-folder-open"></i>
+                    Quản lý thư mục
+                </a>
+            </li>
+
+            <li>
+                <a href="@Url.Action("Logout", "Employee")">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

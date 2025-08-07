@@ -1,0 +1,125 @@
+﻿@model web_tour.Models.TourListManagementViewModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Quản lý danh sách tour";
+}
+
+<link href="~/css/employee/tourmanagement.css" rel="stylesheet" />
+<link href="~/css/notification.css" rel="stylesheet" />
+
+<div class="tour-management">
+    <h1 class="tour-management__title">Quản lý Tour</h1>
+
+    <form method="get" action="@Url.Action("SearchTour", "Employee")" style="display:inline-block; width:100%; padding-bottom:15px" class="mb-3">
+        <div class="d-flex justify-content-end">
+            <a href="@Url.Action("TourInsert", "Employee")" class="btn btn-primary me-2" id="add-category-btn" style="border-radius:20px; text-decoration:none">Thêm tour mới</a>
+            <input type="text"
+                   name="keyword"
+                   class="inputSearchTour"
+                   placeholder="Nhập tên tour du lịch cần kiếm"
+                    />
+            <a href="@Url.Action("TourManagement", "Employee")" class="btn btn-secondary me-2" id="add-category-btn" style="border-radius:20px; text-decoration:none; background-color:gray;">Load lại</a>
+        </div>
+    </form>
+    <br />
+    @if (Model.Tours == null)
+    {
+        <h2 style="padding: 30px 0 0 0px; color:orangered">
+            Chưa có dữ liệu
+        </h2>
+    }
+    else
+    {
+        <h3 style="padding: 15px 0; color:orangered">
+            Tổng số tour hiện có là: @ViewBag.TotalRecords
+        </h3>
+        <table class="tour-table-tour-management">
+            <thead>
+                <tr>
+                    <th>ID TOUR</th>
+                    <th>TIÊU ĐỀ</th>
+                    <th>ẢNH TOUR</th>
+                    <th>TRẠNG THÁI</th>
+                    <th>DANH MỤC</th>
+                    <th>HÀNH ĐỘNG</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tour in Model.Tours)
+                {
+                    <tr>
+                        <td>@tour.ToursId</td>
+                        <td>@tour.Title</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(tour.ImgTitle))
+                            {
+                                <img src="@tour.ImgTitle"
+                                     class="tour-img-thumbnail"
+                                     onerror="this.onerror=null; this.src='@Url.Content("~/images/empty.png")';" />
+                            }
+                            else
+                            {
+                                <span>Không có ảnh</span>
+                            }
+                        </td>
+                        <td>
+                            @if (tour.StatusTour)
+                            {
+                                <span class="status status-active">Đang hiển thị</span>
+                            }
+                            else
+                            {
+                                <span class="status status-inactive">Đã ẩn</span>
+                            }
+                        </td>
+                        <td>@tour.CategoryName</td>
+                        <td>
+                            <a href="@Url.Action("EditProduct", "Employee", new { id = tour.ToursId })"
+                               class="btn btn-edit">
+                                <i class="fas fa-edit"></i>
+                                Chỉnh sửa
+                            </a>
+                            <a href="@Url.Action("ToggleTourStatus", "Employee", new { id = tour.ToursId })"
+                               class="btn btn-toggle"
+                               onclick="return confirm('Bạn có chắc muốn thay đổi trạng thái tour này?');">
+                                <i class="fas @(tour.StatusTour ? "fa-eye-slash" : "fa-eye")"></i>
+                                @(tour.StatusTour ? "Ẩn" : "Hiện")
+                            </a>
+                            <a href="@Url.Action("RemoveProduct", "Employee", new { id = tour.ToursId })"
+                               class="btn btn-delete"
+                               onclick="return confirm('Bạn có chắc chắn muốn xoá danh mục này không?');">
+                                <i class="fas fa-trash-alt"></i>
+                                Xoá
+                            </a>
+                            <a href="@Url.Action("TourDetailManager", "Employee", new { idTour = tour.ToursId, title = tour.Title })"
+                               class="btn btn-edit" style="background-color:cornflowerblue">
+                                <i class="fas fa-edit"></i>
+                                Nội dung chi tiết
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <a class="pagination__link @(i == Model.CurrentPage ? "active" : "")"
+                   href="@Url.Action("TourManagement", "Employee", new { page = i })">@i</a>
+            }
+        </div>
+    }
+</div>
+
+<script src="~/js/notification.js"></script>
+<script>
+    @if (TempData["Error"] != null)
+    {
+        <text> showNotification('error', '@TempData["Error"]'); </text>
+    }
+    else if (TempData["Success"] != null)
+    {
+        <text> showNotification('success', '@TempData["Success"]'); </text>
+    }
+</script>
